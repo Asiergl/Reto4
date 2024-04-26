@@ -14,7 +14,7 @@ import com.mysql.jdbc.PreparedStatement;
 import ventanas.FramePrincipal;
 
 
-
+yihub
 public class GestionBD {
 
 	private Connection conexion;
