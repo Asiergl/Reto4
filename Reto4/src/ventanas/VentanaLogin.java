@@ -7,6 +7,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import controlador.GestionBD;
+import controlador.GestorVentanas;
+import SQL.ClientesSql;
 
 import javax.swing.JLabel;
 
@@ -29,9 +31,9 @@ public class VentanaLogin extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public VentanaLogin(FramePrincipal f) {
+	public VentanaLogin(GestorVentanas gestorVentanas) {
 		setBackground(new Color(0, 0, 0));
-		setSize(460, 302);
+		setSize(488, 302);
         setLayout(null);
 		setVisible(true);
 	
@@ -64,10 +66,10 @@ public class VentanaLogin extends JPanel {
 		btnregistro.setBackground(Color.WHITE);
 		btnregistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				f.cambiarPanel(2);
+				gestorVentanas.cambiarPanel(2);
 			}
 		});
-		btnregistro.setBounds(349, 266, 91, 23);
+		btnregistro.setBounds(349, 266, 129, 23);
 		add(btnregistro);
 		
 		passwordField = new JPasswordField();
@@ -82,13 +84,14 @@ public class VentanaLogin extends JPanel {
 		});
 		btnLogin.addMouseListener(new MouseAdapter() {
 		    public void mouseClicked(MouseEvent e) {
-		        String dni = JtextDni.getText();
+		        String nombre_usuario = JtextDni.getText();
 		        String contraseña = passwordField.getText();
 		        
 		        try {
-		            gestionBD.verificarLogin(dni, contraseña, f);
-	                
-		           
+		        	if (ClientesSql.validarLogin(nombre_usuario, contraseña)) {
+		        		gestorVentanas.cambiarPanel(3);
+		        		gestorVentanas.setVisible(true);
+					}
 		            
 		        } catch (Exception e1) {
 		        	
@@ -101,7 +104,7 @@ public class VentanaLogin extends JPanel {
 		btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnLogin.setForeground(Color.BLACK); // Establecer el color de la fuente en negro
         btnLogin.setBackground(Color.WHITE);
-		btnLogin.setBounds(236, 185, 71, 23);
+		btnLogin.setBounds(210, 185, 129, 23);
 	}
 }
 //

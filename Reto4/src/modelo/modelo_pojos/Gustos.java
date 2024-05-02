@@ -1,4 +1,4 @@
-package modelo_pojos;
+package modelo.modelo_pojos;
 
 public class Gustos {
 	private int idCliente;

@@ -7,6 +7,7 @@ import java.awt.event.MouseListener;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import controlador.GestorVentanas;
 
 import java.awt.Font;
 import java.awt.Color;
@@ -17,11 +18,16 @@ import java.awt.Color;
 public class VentanaBienvenida extends JPanel {	
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
    * Constructor que inicializa y configura el panel de bienvenida.
    * 
    * @param f El objeto FramePrincipal al que pertenece este panel.
    */
-	public VentanaBienvenida(FramePrincipal f) {
+	public VentanaBienvenida(GestorVentanas f) {
 		// Establece el tamaño, visibilidad, diseño y fondo del panel
 		setSize(460, 302);//Configura el tamaño del panel: - Ancho: 934 píxeles y - Altura: 761 píxeles
 		setVisible(true);//Establece la visibilidad del panel: - true: visible y - false: no visible
@@ -96,4 +102,6 @@ public class VentanaBienvenida extends JPanel {
 		});
 			
 	}
+
+
 }
