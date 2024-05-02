@@ -6,8 +6,9 @@ import javax.swing.JFrame;
 
 import javax.swing.JLayeredPane;
 
-
+import ventanas.VentanaArtista;
 import ventanas.VentanaBienvenida;
+import ventanas.VentanaDescubrirMusica;
 import ventanas.VentanaLogin;
 import ventanas.VentanaMenu;
 import ventanas.VentanaRegistro;
@@ -46,16 +47,16 @@ public class GestorVentanas extends JFrame{
 				break;
 		}
 		case 3: {
-			setContentPane(new VentanaMenu());
+			setContentPane(new VentanaMenu(this));
 				break;
 
 		}
 		case 4: {
-	//		setContentPane(new PanelCinePelicula(this, this.controlador));
+		setContentPane(new VentanaDescubrirMusica(this));
 				break;
 		}
 		case 5: {
-	//		setContentPane(new PanelSeleccionDeSesion(this, this.controlador));
+			setContentPane(new VentanaArtista(this));
 				break;
 		}
 
