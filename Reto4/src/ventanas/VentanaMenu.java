@@ -1,8 +1,13 @@
 package ventanas;
 
 import javax.swing.JPanel;
+
+import controlador.GestorVentanas;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
@@ -17,7 +22,7 @@ public class VentanaMenu extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public VentanaMenu() {
+	public VentanaMenu(GestorVentanas f) {
 		setSize(460, 302); 
 		setBackground(new Color(0, 0, 0));
          
@@ -30,6 +35,14 @@ public class VentanaMenu extends JPanel {
 	        btnAtras.setBackground(new Color(255, 255, 255));
 	        
 	        add(btnAtras);
+	        
+	        btnAtras.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					f.cambiarPanel(1);
+					f.setVisible(true);
+				}
+			});
 	        
 	        JButton btnMiPerfil = new JButton("Mi perfil");
 	        
@@ -50,6 +63,13 @@ public class VentanaMenu extends JPanel {
 	      btnDescubrirMusica.setForeground(Color.BLACK); // Establecer el color de la fuente en negro
 	        btnDescubrirMusica.setBackground(Color.WHITE);
 	        add(btnDescubrirMusica);
+	        btnDescubrirMusica.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					f.cambiarPanel(4);
+					f.setVisible(true);
+				}
+			});
 	        
 	        JButton btnDescubrirPodcast = new JButton("Descubrir Podcast");
 	        btnDescubrirPodcast.setBounds(134, 137, 190, 23);

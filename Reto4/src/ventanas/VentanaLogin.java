@@ -15,6 +15,8 @@ import javax.swing.JLabel;
 
 import java.awt.Font;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -99,12 +101,39 @@ public class VentanaLogin extends JPanel {
 		        }
 		    }
 		});
+		
+		JComboBox<String> comboBox = new JComboBox<String>();	
+		comboBox.setBounds(144, 188, 264, 29);
+		comboBox.addItem("Premium");
+        comboBox.addItem("No premium");
+		add(comboBox);
 
 		add(btnLogin);
 		btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnLogin.setForeground(Color.BLACK); // Establecer el color de la fuente en negro
         btnLogin.setBackground(Color.WHITE);
-		btnLogin.setBounds(210, 185, 129, 23);
+		btnLogin.setBounds(200, 228, 129, 23);
+		
+		JButton btnAtras = new JButton("Atras");
+		btnAtras.setForeground(Color.BLACK);
+		btnAtras.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnAtras.setBackground(Color.WHITE);
+		btnAtras.setBounds(39, 267, 129, 23);
+		add(btnAtras);
+		
+		JLabel lblTipoUsuario = new JLabel("Tipo usuario:");
+		lblTipoUsuario.setForeground(Color.WHITE);
+		lblTipoUsuario.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblTipoUsuario.setBackground(Color.WHITE);
+		lblTipoUsuario.setBounds(31, 188, 103, 22);
+		add(lblTipoUsuario);
+		btnAtras.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				gestorVentanas.cambiarPanel(0);
+				gestorVentanas.setVisible(true);
+			}
+		});
 	}
 }
 //

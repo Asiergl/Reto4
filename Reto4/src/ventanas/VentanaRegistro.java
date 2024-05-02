@@ -7,6 +7,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JComboBox;
 import javax.swing.JButton;
@@ -15,6 +17,7 @@ import javax.swing.JTextField;
 import controlador.GestionBD;
 import controlador.GestorVentanas;
 import modelo.modelo_pojos.Cliente;
+import javax.swing.JPasswordField;
 
 
 
@@ -23,15 +26,18 @@ public class VentanaRegistro extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JTextField textDNI;
 	private JTextField textNombre;
-	private JTextField textContraseña;
 	private JTextField textApellido;
 	private GestionBD gestionBD = new GestionBD();
+	private JPasswordField textContraseña;
+	private JTextField txtUsuario;
+	private JTextField txtPremium;
+	private JTextField textField;
 
 	/**
 	 * Create the panel.
 	 */
 	public VentanaRegistro(GestorVentanas f) {
-		setSize(560, 302);
+		setSize(560, 385);
 		setVisible(true);
 		setLayout(null);
 		setBackground(new Color(0, 0, 0));
@@ -40,43 +46,29 @@ public class VentanaRegistro extends JPanel {
 		lblTitulo.setForeground(new Color(255, 255, 255));
 		lblTitulo.setBackground(new Color(255, 255, 255));
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblTitulo.setBounds(61, 42, 111, 23);
+		lblTitulo.setBounds(61, 21, 111, 23);
 		add(lblTitulo);
 		
 		JLabel lblNombre = new JLabel("Nombre");
 		lblNombre.setForeground(Color.WHITE);
 		lblNombre.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblNombre.setBackground(Color.WHITE);
-		lblNombre.setBounds(61, 126, 111, 23);
+		lblNombre.setBounds(61, 91, 111, 23);
 		add(lblNombre);
 		
 		JLabel lblApellido = new JLabel("Apellido\r\n");
 		lblApellido.setForeground(Color.WHITE);
 		lblApellido.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblApellido.setBackground(Color.WHITE);
-		lblApellido.setBounds(351, 126, 111, 23);
+		lblApellido.setBounds(61, 165, 111, 23);
 		add(lblApellido);
-		
-		JLabel lblSexo = new JLabel("Sexo");
-		lblSexo.setForeground(Color.WHITE);
-		lblSexo.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblSexo.setBackground(Color.WHITE);
-		lblSexo.setBounds(61, 225, 111, 23);
-		add(lblSexo);
 		
 		JLabel lblContrasea = new JLabel("Contraseña\r\n");
 		lblContrasea.setForeground(Color.WHITE);
 		lblContrasea.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblContrasea.setBackground(Color.WHITE);
-		lblContrasea.setBounds(351, 42, 111, 23);
+		lblContrasea.setBounds(61, 236, 111, 23);
 		add(lblContrasea);
-		
-		JComboBox<String> comboBox = new JComboBox<String>();	
-		comboBox.setBounds(119, 226, 93, 22);
-		comboBox.addItem("Seleccionar...");
-		comboBox.addItem("M");
-        comboBox.addItem("F");
-		add(comboBox);
 		
 		
 		JButton btnInsertar = new JButton("Guardar");
@@ -87,8 +79,10 @@ public class VentanaRegistro extends JPanel {
 		        String dni = textDNI.getText();
 		        String nombre = textNombre.getText();
 		        String apellido = textApellido.getText();
-		        String sexo = (String) comboBox.getSelectedItem();
 		        String contraseña = textContraseña.getText();
+		        String usuario = txtUsuario.getText();
+		        String fechaNacimiento = textField.getText();
+		        String premium =txtPremium.getText();
 
 		        // Crea un nuevo objeto Cliente
 		        Cliente cliente = new Cliente();
@@ -102,40 +96,80 @@ public class VentanaRegistro extends JPanel {
 		   //     gestionBD.insertarNuevoCliente(cliente, f);
 		    }
 		});
-		btnInsertar.setBounds(372, 226, 130, 23);
+		btnInsertar.setBounds(400, 325, 111, 31);
 		add(btnInsertar);
 
 		
 		textDNI = new JTextField();
-		textDNI.setBounds(61, 76, 151, 29);
+		textDNI.setBounds(61, 51, 151, 29);
 		add(textDNI);
 		textDNI.setColumns(10);
 		
 		textNombre = new JTextField();
 		textNombre.setColumns(10);
-		textNombre.setBounds(61, 160, 151, 29);
+		textNombre.setBounds(61, 125, 151, 29);
 		add(textNombre);
-		
-		textContraseña = new JTextField();
-		textContraseña.setColumns(10);
-		textContraseña.setBounds(351, 76, 151, 29);
-		add(textContraseña);
 		
 		textApellido = new JTextField();
 		textApellido.setColumns(10);
-		textApellido.setBounds(351, 160, 151, 29);
+		textApellido.setBounds(61, 199, 151, 29);
 		add(textApellido);
 		
-		JButton btnNewButton_1 = new JButton("Atras");
-		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		JButton btnAtras = new JButton("Atras");
+		btnAtras.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnAtras.setBounds(32, 324, 78, 31);
+		add(btnAtras);
+		btnAtras.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
 				f.cambiarPanel(1);
+				f.setVisible(true);
 			}
-			
 		});
-		btnNewButton_1.setBounds(24, 321, 78, 37);
-		add(btnNewButton_1);
+		
+		textContraseña = new JPasswordField();
+		textContraseña.setBounds(61, 270, 154, 29);
+		add(textContraseña);
+		
+		JLabel lblUsuario = new JLabel("Usuario");
+		lblUsuario.setForeground(Color.WHITE);
+		lblUsuario.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblUsuario.setBackground(Color.WHITE);
+		lblUsuario.setBounds(346, 26, 111, 23);
+		add(lblUsuario);
+		
+		txtUsuario = new JTextField();
+		txtUsuario.setColumns(10);
+		txtUsuario.setBounds(346, 55, 151, 29);
+		add(txtUsuario);
+		
+		JButton btnComprarPremium = new JButton("Comprar premium");
+		btnComprarPremium.setBounds(181, 325, 151, 31);
+		add(btnComprarPremium);
+		
+		txtPremium = new JTextField();
+		txtPremium.setColumns(10);
+		txtPremium.setBounds(346, 125, 151, 29);
+		add(txtPremium);
+		
+		JLabel lblPremiumActivado = new JLabel("Premium activado");
+		lblPremiumActivado.setForeground(Color.WHITE);
+		lblPremiumActivado.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblPremiumActivado.setBackground(Color.WHITE);
+		lblPremiumActivado.setBounds(346, 96, 151, 23);
+		add(lblPremiumActivado);
+		
+		JLabel lblFechaNacimiento = new JLabel("Fecha nacimiento");
+		lblFechaNacimiento.setForeground(Color.WHITE);
+		lblFechaNacimiento.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblFechaNacimiento.setBackground(Color.WHITE);
+		lblFechaNacimiento.setBounds(346, 170, 151, 23);
+		add(lblFechaNacimiento);
+		
+		textField = new JTextField();
+		textField.setColumns(10);
+		textField.setBounds(346, 199, 151, 29);
+		add(textField);
 		 setVisible(true);
 	}
 }
