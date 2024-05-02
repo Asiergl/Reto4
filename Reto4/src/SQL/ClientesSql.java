@@ -80,7 +80,7 @@ public class ClientesSql {
 		} catch (Exception e) {
 			System.out.println("Error generico - " + e.getMessage());
 		} finally {
-
+//
 			try {
 				if (resultSet != null)
 					resultSet.close();
