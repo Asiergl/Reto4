@@ -9,12 +9,8 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-import com.mysql.jdbc.PreparedStatement;
-
-import ventanas.FramePrincipal;
 
 
-yihub rfctu
 public class GestionBD {
 
 	private Connection conexion;
@@ -27,7 +23,7 @@ public class GestionBD {
 		System.out.println("Conectando........");
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conexion = DriverManager.getConnection("jdbc:mysql://localhost/gestiondecine", "root", "");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tarde", "root", "");
 		} catch (ClassNotFoundException e) {
 			System.out.println("Libreria no encontrada");
 		} catch (SQLException e) {
@@ -48,7 +44,7 @@ public class GestionBD {
 		System.out.println("Conexion cerrada");
 	}
 
-	public boolean verificarLogin(String dni, String contraseña, FramePrincipal f) {
+	public boolean verificarLogin(String dni, String contraseña, GestorVentanas f) {
 	    boolean inicioSesionExitoso = false;
 	    try {
 	        Statement consulta = conexion.createStatement();

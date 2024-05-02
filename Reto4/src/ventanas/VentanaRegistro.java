@@ -1,4 +1,4 @@
-package paneles;
+package ventanas;
 
 import java.awt.Color;
 
@@ -13,7 +13,9 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 
 import controlador.GestionBD;
-import modelo.Cliente;
+import controlador.GestorVentanas;
+import modelo.modelo_pojos.Cliente;
+
 
 
 public class VentanaRegistro extends JPanel {
@@ -28,11 +30,11 @@ public class VentanaRegistro extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public VentanaRegistro(FramePrincipal f) {
-		setSize(460, 302);
+	public VentanaRegistro(GestorVentanas f) {
+		setSize(560, 302);
 		setVisible(true);
 		setLayout(null);
-		setBackground(Color.DARK_GRAY);
+		setBackground(new Color(0, 0, 0));
 		
 		JLabel lblTitulo = new JLabel("DNI");
 		lblTitulo.setForeground(new Color(255, 255, 255));
@@ -90,14 +92,14 @@ public class VentanaRegistro extends JPanel {
 
 		        // Crea un nuevo objeto Cliente
 		        Cliente cliente = new Cliente();
-		        cliente.setDni(dni);
-		        cliente.setNombre_Cliente(nombre);
-		        cliente.setApellido(apellido);
-		        cliente.setSexo(sexo);
+		 //       cliente.setDni(dni);
+		  //      cliente.setNombre_Cliente(nombre);
+		  //      cliente.setApellido(apellido);
+		  //      cliente.setSexo(sexo);
 		        cliente.setContraseña(contraseña);
 
 		        // Inserta el nuevo cliente en la base de datos
-		        gestionBD.insertarNuevoCliente(cliente, f);
+		   //     gestionBD.insertarNuevoCliente(cliente, f);
 		    }
 		});
 		btnInsertar.setBounds(372, 226, 130, 23);

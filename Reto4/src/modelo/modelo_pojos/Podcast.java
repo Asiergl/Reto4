@@ -1,9 +1,10 @@
-package modelo_pojos;
+package modelo.modelo_pojos;
 
 import java.awt.image.BufferedImage;
 
 public class Podcast extends Audio {
 	private String colaboradores;
+	private int idPodcaster;
 	
 	
 	
