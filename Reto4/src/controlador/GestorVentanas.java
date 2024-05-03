@@ -6,18 +6,20 @@ import javax.swing.JFrame;
 
 import javax.swing.JLayeredPane;
 
-import ventanas.VentanaArtista;
-import ventanas.VentanaBienvenida;
-import ventanas.VentanaDescubrirMusica;
-import ventanas.VentanaLogin;
-import ventanas.VentanaMenu;
-import ventanas.VentanaRegistro;
+import SQL.Subir;
+import modelo.Cliente;
+import vista.VentanaArtista;
+import vista.VentanaBienvenida;
+import vista.VentanaDescubrirMusica;
+import vista.VentanaLogin;
+import vista.VentanaMenu;
+import vista.VentanaRegistro;
 
+public class GestorVentanas extends JFrame {
 
-public class GestorVentanas extends JFrame{
-	
 	private static final long serialVersionUID = 1L;
 	private JFrame frame;
+	public Cliente cliente = new Cliente();
 	
 	public GestorVentanas() {
 		setSize(600, 480);
@@ -26,59 +28,61 @@ public class GestorVentanas extends JFrame{
 		setTitle("Spotify Elorrieta");
 	}
 
-	public void lanzarVentana() {
+	public void lanzarVentana() {;
 		this.cambiarPanel(0);
 		this.setVisible(true);
 	}
+
 	public void cambiarPanel(int i) {
-		switch(i) {
+		switch (i) {
 		case 0: {
 			setContentPane(new VentanaBienvenida(this));
-				break;
-				
+			break;
+
 		}
 		case 1: {
 			setContentPane(new VentanaLogin(this));
 
-				break;
+			break;
 		}
 		case 2: {
 			setContentPane(new VentanaRegistro(this));
-				break;
+			break;
 		}
 		case 3: {
 			setContentPane(new VentanaMenu(this));
-				break;
+			break;
 
 		}
 		case 4: {
-		setContentPane(new VentanaDescubrirMusica(this));
-				break;
+			setContentPane(new VentanaDescubrirMusica(this));
+			break;
 		}
 		case 5: {
 			setContentPane(new VentanaArtista(this));
-				break;
+			break;
 		}
 
 		case 6: {
-	//	setContentPane(new PanelResumenCompra(this, this.controlador));
+			// setContentPane(new PanelResumenCompra(this, this.controlador));
 			break;
 		}
-		
+
 		case 7: {
-	//		setContentPane(new PanelFin(this));
-				break;
+			// setContentPane(new PanelFin(this));
+			break;
 		}
-}
+		}
 	}
+
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		    /*
-			Conectorbd gestion = new Conectorbd();
-			*/
-			GestorVentanas ventanaPrincipal = new GestorVentanas();
-			ventanaPrincipal.lanzarVentana();
+		/*
+		 * Conectorbd gestion = new Conectorbd();
+		 */
+		GestorVentanas ventanaPrincipal = new GestorVentanas();
+		ventanaPrincipal.lanzarVentana();
 	}
 }

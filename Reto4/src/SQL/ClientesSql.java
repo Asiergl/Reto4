@@ -8,7 +8,8 @@ import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 
-import modelo.modelo_pojos.Cliente;
+import modelo.Cliente;
+import vista.Error;
 
 
 
@@ -53,7 +54,7 @@ public class ClientesSql {
 	}
 
 	public static boolean validarLogin(String nombre_usuario, String Contrasena) {
-
+		Error error = new Error();
 		boolean ret = false;
 
 		Connection connection = null;
@@ -61,7 +62,7 @@ public class ClientesSql {
 		ResultSet resultSet = null;
 
 		try {
-			connection = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tarde", "root", "");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tarde", "cliente", "Elorrieta00");
 
 			statement = connection.createStatement();
 
@@ -73,6 +74,7 @@ public class ClientesSql {
 				JOptionPane.showMessageDialog(null, "nombre_usuario y contraseña correctos");
 				ret = true;
 			} else {
+				error.error("Nombre de usuario o contraseña incorrectos");
 			}
 
 		} catch (SQLException sqle) {

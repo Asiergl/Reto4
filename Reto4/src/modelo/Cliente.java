@@ -1,4 +1,4 @@
-package modelo.modelo_pojos;
+package modelo;
 
 import java.util.Date;
 
@@ -13,12 +13,29 @@ public class Cliente {
 	private int edad;
 	private Date fechaRegistro;
 	private String tipoCliente;
-	protected int playlistMax = 3;
+	//contadores para saber si el usuario es administrador o cliente
+	private int contAdmin = 0;
+	private int contCliente = 0;
 	
 	
+	public int getContAdmin() {
+		return contAdmin;
+	}
+
+	public void setContAdmin(int contAdmin) {
+		this.contAdmin = contAdmin;
+	}
+
+	public int getContCliente() {
+		return contCliente;
+	}
+
+	public void setContCliente(int contCliente) {
+		this.contCliente = contCliente;
+	}
+
 	public Cliente(int idCliente, String nombreCliente, String apellidoCliente, String idioma, String nombreUsuario,
 			String contraseña, Date fechaNacimiento, int edad, Date fechaRegistro, String tipoCliente) {
-		super();
 		this.idCliente = idCliente;
 		this.nombreCliente = nombreCliente;
 		this.apellidoCliente = apellidoCliente;
@@ -113,14 +130,6 @@ public class Cliente {
 		this.tipoCliente = tipoCliente;
 	}
 
-	public int getPlaylistMax() {
-		return playlistMax;
-	}
-
-	public void setPlaylistMax(int playlistMax) {
-		this.playlistMax = playlistMax;
-	}
-	
 	
 	
 	

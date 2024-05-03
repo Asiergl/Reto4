@@ -1,4 +1,4 @@
-package modelo.modelo_pojos;
+package modelo;
 
 public class Reproduccion {
 private int idAudio;

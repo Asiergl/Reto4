@@ -1,4 +1,4 @@
-package ventanas;
+package vista;
 
 import java.awt.Color;
 
@@ -16,7 +16,8 @@ import javax.swing.JTextField;
 
 import controlador.GestionBD;
 import controlador.GestorVentanas;
-import modelo.modelo_pojos.Cliente;
+import modelo.Cliente;
+
 import javax.swing.JPasswordField;
 
 
@@ -27,7 +28,6 @@ public class VentanaRegistro extends JPanel {
 	private JTextField textDNI;
 	private JTextField textNombre;
 	private JTextField textApellido;
-	private GestionBD gestionBD = new GestionBD();
 	private JPasswordField textContraseña;
 	private JTextField txtUsuario;
 	private JTextField txtPremium;
