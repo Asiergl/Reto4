@@ -8,6 +8,9 @@ public class Gustos {
 		this.idCliente = idCliente;
 		this.idAudio = idAudio;
 	}
+	public Gustos() {
+		// TODO Auto-generated constructor stub
+	}
 	public int getIdCliente() {
 		return idCliente;
 	}

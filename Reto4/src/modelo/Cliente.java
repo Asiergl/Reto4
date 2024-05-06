@@ -130,6 +130,11 @@ public class Cliente {
 		this.tipoCliente = tipoCliente;
 	}
 
+	public void setIdioma(int int1) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 	
 	

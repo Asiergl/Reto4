@@ -14,6 +14,9 @@ public Reproduccion(int idAudio, int idCliente, String fechaReproduccion) {
 	this.idCliente = idCliente;
 	this.fechaReproduccion = fechaReproduccion;
 }
+public Reproduccion() {
+	// TODO Auto-generated constructor stub
+}
 public int getIdAudio() {
 	return idAudio;
 }

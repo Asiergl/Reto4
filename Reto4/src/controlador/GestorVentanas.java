@@ -1,13 +1,21 @@
 package controlador;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 
-import javax.swing.JLayeredPane;
-
-import SQL.Subir;
+import modelo.Album;
+import modelo.Artista;
+import modelo.Audio;
+import modelo.Cancion;
 import modelo.Cliente;
+import modelo.Estadisticas;
+import modelo.Gustos;
+import modelo.Idioma;
+import modelo.Musico;
+import modelo.PlayList;
+import modelo.Podcast;
+import modelo.Podcaster;
+import modelo.Premium;
+import modelo.Reproduccion;
 import vista.VentanaArtista;
 import vista.VentanaBienvenida;
 import vista.VentanaDescubrirMusica;
@@ -19,8 +27,24 @@ public class GestorVentanas extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JFrame frame;
+
+	public Album album = new Album();
+	public Artista artista = new Artista() {
+	};
+	public Audio audio = new Audio() {
+	};
+	public Cancion cancion = new Cancion();
 	public Cliente cliente = new Cliente();
-	
+	public Estadisticas estadisticas = new Estadisticas();
+	public Gustos gustos = new Gustos();
+	public Idioma idioma = new Idioma();
+	public Musico musico = new Musico();
+	public PlayList playlist = new PlayList();
+	public Podcast podcast = new Podcast();
+	public Podcaster pocaster = new Podcaster();
+	public Premium premium = new Premium();
+	public Reproduccion reproduccion = new Reproduccion();
+
 	public GestorVentanas() {
 		setSize(600, 480);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -28,7 +52,8 @@ public class GestorVentanas extends JFrame {
 		setTitle("Spotify Elorrieta");
 	}
 
-	public void lanzarVentana() {;
+	public void lanzarVentana() {
+		;
 		this.cambiarPanel(0);
 		this.setVisible(true);
 	}

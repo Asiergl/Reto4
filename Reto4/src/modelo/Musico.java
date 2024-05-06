@@ -11,6 +11,10 @@ public Musico(int idArtista, String nombreArtistico, BufferedImage imagen, Strin
 	
 }
 
+public Musico() {
+	// TODO Auto-generated constructor stub
+}
+
 public String getCaracteristica() {
 	return caracteristica;
 }

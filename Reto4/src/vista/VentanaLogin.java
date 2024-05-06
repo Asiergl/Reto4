@@ -94,12 +94,12 @@ public class VentanaLogin extends JPanel {
 				try {
 					if (contAdmin == 1) {
 						if (nombre_usuario.equalsIgnoreCase("admin") && contraseña.equalsIgnoreCase("admin")) {
-							V.cambiarPanel(3);
+							V.cambiarPanel(3);//cambiar al panel de menu de admin
 							V.setVisible(true);
 						}
 					} else {
 
-						if (ClientesSql.validarLogin(nombre_usuario, contraseña)) {
+						if (ClientesSql.validarLogin(nombre_usuario, contraseña, V.cliente)) {
 							V.cambiarPanel(3);
 							V.setVisible(true);
 						}

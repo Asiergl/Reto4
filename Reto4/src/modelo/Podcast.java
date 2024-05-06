@@ -17,6 +17,12 @@ public class Podcast extends Audio {
 
 
 
+	public Podcast() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 	public String getColaboradores() {
 		return colaboradores;
 	}

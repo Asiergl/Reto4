@@ -20,6 +20,10 @@ public abstract class Audio {
 		this.tipo = tipo;
 	}
 
+	public Audio() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getIdAudio() {
 		return idAudio;
 	}

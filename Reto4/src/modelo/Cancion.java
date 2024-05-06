@@ -14,6 +14,10 @@ public class Cancion extends Audio{
 		
 	}
 
+	public Cancion() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getIdAlbum() {
 		return idAlbum;
 	}

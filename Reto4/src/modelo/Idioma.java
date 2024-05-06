@@ -13,6 +13,9 @@ public Idioma(int idIdioma, String letraIdioma, String descripcion) {
 	this.letraIdioma = letraIdioma;
 	this.descripcion = descripcion;
 }
+public Idioma() {
+	// TODO Auto-generated constructor stub
+}
 public int getIdIdioma() {
 	return idIdioma;
 }

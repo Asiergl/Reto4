@@ -10,6 +10,9 @@ public class Album  {
 	private BufferedImage imagen;
 	private int idArtista;
 	private int numeroCanciones;
+	public Album() {
+	}
+
 	public Album(int idAlbum, String titulo, String fecha, String genero, BufferedImage imagen, int idArtista,
 			int numeroCanciones) {
 		super();

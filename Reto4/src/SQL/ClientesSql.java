@@ -53,7 +53,7 @@ public class ClientesSql {
 		}
 	}
 
-	public static boolean validarLogin(String nombre_usuario, String Contrasena) {
+	public static boolean validarLogin(String nombre_usuario, String Contrasena, Cliente cliente) {
 		Error error = new Error();
 		boolean ret = false;
 
@@ -72,6 +72,16 @@ public class ClientesSql {
 
 			if (resultSet.next()) {
 				JOptionPane.showMessageDialog(null, "nombre_usuario y contraseña correctos");
+				cliente.setIdCliente(resultSet.getInt(1));
+				cliente.setNombreCliente(resultSet.getString(2));
+				cliente.setApellidoCliente(resultSet.getString(3));
+				cliente.setIdioma(resultSet.getInt(4));
+				cliente.setNombreUsuario(resultSet.getString(5));
+				cliente.setContraseña(resultSet.getString(6));
+				cliente.setFechaNacimiento(resultSet.getDate(7));
+				cliente.setEdad(resultSet.getInt(8));
+				cliente.setFechaRegistro(resultSet.getDate(9));
+				cliente.setTipoCliente(resultSet.getString(10));
 				ret = true;
 			} else {
 				error.error("Nombre de usuario o contraseña incorrectos");

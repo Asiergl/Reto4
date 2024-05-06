@@ -8,6 +8,9 @@ private String nombreArtistico;
 private BufferedImage imagen;
 private String descripcion;
 
+public Artista() {
+	
+}
 
 public Artista(int idArtista, String nombreArtistico, BufferedImage imagen, String descripcion) {
 	this.idArtista=idArtista;

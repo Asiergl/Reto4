@@ -16,6 +16,10 @@ public class Podcaster extends Artista {
 		
 	}
 
+	public Podcaster() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getGenero() {
 		return genero;
 	}
