@@ -53,11 +53,10 @@ public class DMusicaSQL {
 					"Elorrieta00");
 
 			statement = connection.createStatement();
-			String sql = "select * from musico where nombre_artistico ='" + musico.getNombreArtistico();		
+			String sql = "select * from musico where nombre_artistico ='" + musico.getNombreArtistico() + "'";		
 			resultSet = statement.executeQuery(sql);
 
 			while (resultSet.next()) {
-				System.out.println(1);
 				Blob imagenBlob = resultSet.getBlob(3);
 				byte[] arrayImagen = imagenBlob.getBytes(1, (int) imagenBlob.length());
 				imagen = new ImageIcon(arrayImagen);
@@ -66,7 +65,8 @@ public class DMusicaSQL {
 				musico.setDescripcion(resultSet.getString(4));
 				musico.setCaracteristica(resultSet.getString(5));
 			}
-			sql = "select * from album where idMusico ='" + musico.getIdArtista();
+			System.out.println(musico.toString());
+			sql = "select * from album where idMusico ='" + musico.getIdArtista()+ "'";
 			
 			resultSet = statement.executeQuery(sql);
 
@@ -74,6 +74,7 @@ public class DMusicaSQL {
 				discos.add( resultSet.getString(2));		
 			}
 		} catch (SQLException sqle) {
+			System.out.println(sqle);
 			
 		} catch (Exception e) {
 			

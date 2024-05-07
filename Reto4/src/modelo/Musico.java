@@ -13,6 +13,14 @@ public Musico(int idArtista, String nombreArtistico, ImageIcon imagen, String de
 	
 }
 
+@Override
+public String toString() {
+	return "Musico [caracteristica=" + caracteristica + ", getCaracteristica()=" + getCaracteristica()
+			+ ", getIdArtista()=" + getIdArtista() + ", getNombreArtistico()=" + getNombreArtistico() + ", getImagen()="
+			+ getImagen() + ", getDescripcion()=" + getDescripcion() + ", getClass()=" + getClass() + ", hashCode()="
+			+ hashCode() + ", toString()=" + super.toString() + "]";
+}
+
 public Musico() {
 	// TODO Auto-generated constructor stub
 }

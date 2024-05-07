@@ -88,21 +88,19 @@ public class VentanaArtista extends JPanel {
 		
 		JList listDiscos = new JList();
 		listDiscos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		listDiscos.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-				v.album.setTitulo((String) listDiscos.getSelectedValuesList().get(0));
-				System.out.println(v.musico.getNombreArtistico());
-				v.cambiarPanel(5);
-			}
-		});
 		listDiscos.setModel(new AbstractListModel() {
 			public int getSize() {
 				return discos.size();
 			}
 			public Object getElementAt(int index) {
 				return discos.get(index);
+			}
+		});
+		listDiscos.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				v.album.setTitulo((String) listDiscos.getSelectedValuesList().get(0));
+				v.cambiarPanel(5);
 			}
 		});
 		listDiscos.setBounds(22, 101, 142, 174);
