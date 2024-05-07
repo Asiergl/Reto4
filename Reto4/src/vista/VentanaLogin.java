@@ -6,9 +6,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import SQLCliente.ClientesSql;
 import controlador.GestionBD;
 import controlador.GestorVentanas;
-import SQL.ClientesSql;
 
 import javax.swing.JLabel;
 
@@ -32,6 +32,8 @@ public class VentanaLogin extends JPanel {
 	 * Create the panel.
 	 */
 	public VentanaLogin(GestorVentanas V) {
+		ClientesSql sql = new ClientesSql();
+		
 		setBackground(new Color(0, 0, 0));
 		setSize(488, 302);
 		setLayout(null);
@@ -99,7 +101,7 @@ public class VentanaLogin extends JPanel {
 						}
 					} else {
 
-						if (ClientesSql.validarLogin(nombre_usuario, contraseña, V.cliente)) {
+						if (sql.validarLogin(nombre_usuario, contraseña, V.cliente)) {
 							V.cambiarPanel(3);
 							V.setVisible(true);
 						}

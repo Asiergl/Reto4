@@ -1,5 +1,8 @@
 package controlador;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JFrame;
 
 import modelo.Album;
@@ -44,6 +47,7 @@ public class GestorVentanas extends JFrame {
 	public Podcaster pocaster = new Podcaster();
 	public Premium premium = new Premium();
 	public Reproduccion reproduccion = new Reproduccion();
+	
 
 	public GestorVentanas() {
 		setSize(600, 480);

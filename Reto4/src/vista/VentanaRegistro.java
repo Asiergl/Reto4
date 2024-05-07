@@ -21,6 +21,10 @@ import modelo.Cliente;
 import javax.swing.JPasswordField;
 import javax.swing.SwingConstants;
 
+import SQLCliente.ClientesSql;
+
+import javax.swing.DefaultComboBoxModel;
+
 
 
 public class VentanaRegistro extends JPanel {
@@ -37,7 +41,9 @@ public class VentanaRegistro extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public VentanaRegistro(GestorVentanas f) {
+	public VentanaRegistro(GestorVentanas v) {
+		ClientesSql sql = new ClientesSql();
+		
 		setSize(560, 385);
 		setVisible(true);
 		setLayout(null);
@@ -81,15 +87,15 @@ public class VentanaRegistro extends JPanel {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
 		        // Recolecta los valores de los campos de texto y del JComboBox
-		        String dni = textFecha.getText();
-		        String nombre = textNombre.getText();
-		        String apellido = textApellido.getText();
-		        String contraseña = textContraseña.getText();
-		        String usuario = txtUsuario.getText();
+		    	v.cliente.setNombreCliente(textNombre.getText());
+		        v.cliente.setApellidoCliente(textApellido.getText());
+		        v.cliente.setContraseña(textContraseña.getText());
+		        v.cliente.setNombreUsuario(txtUsuario.getText());
+		        v.cliente.setTipoCliente("free");
+		        
 		        String fechaNacimiento = textContraseña2.getText();
 		        String premium =txtPremium.getText();
-		        cliente.setContraseña(contraseña);
-		        gestionBD.insertarNuevoCliente(cliente, f);
+		        sql.insertarCliente(v.cliente);
 		    }
 		});
 		btnInsertar.setBounds(400, 325, 111, 31);
@@ -118,8 +124,8 @@ public class VentanaRegistro extends JPanel {
 		btnAtras.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				f.cambiarPanel(1);
-				f.setVisible(true);
+				v.cambiarPanel(1);
+				v.setVisible(true);
 			}
 		});
 		
@@ -169,6 +175,20 @@ public class VentanaRegistro extends JPanel {
 		textContraseña2.setColumns(10);
 		textContraseña2.setBounds(346, 199, 151, 29);
 		add(textContraseña2);
+		
+		JComboBox comboBoxIdioma = new JComboBox();
+		comboBoxIdioma.setModel(new DefaultComboBoxModel(new String[] {"Euskera", "Español", "Ingles", "Frances", "Aleman", "Catalan", "Gallego", "Aragones"}));
+		comboBoxIdioma.setSelectedIndex(0);
+		comboBoxIdioma.setBounds(346, 273, 151, 22);
+		add(comboBoxIdioma);
+		
+		JLabel lblIdioma = new JLabel("Idioma");
+		lblIdioma.setHorizontalAlignment(SwingConstants.CENTER);
+		lblIdioma.setForeground(Color.WHITE);
+		lblIdioma.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblIdioma.setBackground(Color.WHITE);
+		lblIdioma.setBounds(346, 241, 151, 23);
+		add(lblIdioma);
 		 setVisible(true);
 	}
 }

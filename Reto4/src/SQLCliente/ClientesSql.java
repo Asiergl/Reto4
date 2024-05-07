@@ -1,4 +1,4 @@
-package SQL;
+package SQLCliente;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,8 +11,6 @@ import javax.swing.JOptionPane;
 import modelo.Cliente;
 import vista.Error;
 
-
-
 public class ClientesSql {
 
 	public void insertarCliente(Cliente cliente) {
@@ -22,13 +20,23 @@ public class ClientesSql {
 		Statement statement = null;
 
 		try {
-			connection = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tarde", "root", "");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tarde", "cliente",
+					"Elorrieta00");
 
 			statement = connection.createStatement();
+			/*
+			 * crear triger BEGIN DECLARE lastId int; DECLARE IdiomId int; DECLARE edad int;
+			 * DECLARE f_actual date SELECT id_idioma INTO IdiomId FROM idioma WHERE
+			 * idioma.descripcion = idiomaD; set edad = YEAR_MONTH END
+			 * 
+			 */
 
 			String sql = "insert into cliente (id_cliente, nombre, apellido,id_idioma, nombre_usuario, contraseña, edad, fecha_registro, fecha_nacimiento, tipo) VALUES ('"
-					+  cliente.getIdCliente() + " ','" + cliente.getNombreCliente() + "','" + cliente.getApellidoCliente() + "','"
-					+ cliente.getIdioma() +  " ','" + cliente.getNombreUsuario()+ " ','" + cliente.getContraseña()+" ','" + cliente.getEdad()+" ','" + cliente.getFechaRegistro()+" ','" + cliente.getFechaNacimiento()+  " ','" + cliente.getTipoCliente()+"')";
+					+ cliente.getIdCliente() + " ','" + cliente.getNombreCliente() + "','"
+					+ cliente.getApellidoCliente() + "','" + cliente.getIdioma() + " ','" + cliente.getNombreUsuario()
+					+ " ','" + cliente.getContraseña() + " ','" + cliente.getEdad() + " ','"
+					+ cliente.getFechaRegistro() + " ','" + cliente.getFechaNacimiento() + " ','"
+					+ cliente.getTipoCliente() + "')";
 
 			statement.executeUpdate(sql);
 
@@ -53,7 +61,7 @@ public class ClientesSql {
 		}
 	}
 
-	public static boolean validarLogin(String nombre_usuario, String Contrasena, Cliente cliente) {
+	public boolean validarLogin(String nombre_usuario, String Contrasena, Cliente cliente) {
 		Error error = new Error();
 		boolean ret = false;
 
@@ -62,12 +70,13 @@ public class ClientesSql {
 		ResultSet resultSet = null;
 
 		try {
-			connection = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tarde", "cliente", "Elorrieta00");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tarde", "cliente",
+					"Elorrieta00");
 
 			statement = connection.createStatement();
 
-			String sql = "select * from cliente where nombre_usuario = '" + nombre_usuario + "' and Contraseña = '" + Contrasena
-					+ "'";
+			String sql = "select * from cliente where nombre_usuario = '" + nombre_usuario + "' and Contraseña = '"
+					+ Contrasena + "'";
 			resultSet = statement.executeQuery(sql);
 
 			if (resultSet.next()) {

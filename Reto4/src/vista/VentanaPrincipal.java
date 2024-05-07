@@ -1,6 +1,6 @@
 package vista;
 
-import SQL.Subir;
+import SQLCliente.Subir;
 import controlador.GestionBD;
 
 public class VentanaPrincipal {
