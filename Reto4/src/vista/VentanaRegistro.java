@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.JComboBox;
 import javax.swing.JButton;
@@ -37,12 +38,14 @@ public class VentanaRegistro extends JPanel {
 	private JTextField txtUsuario;
 	private JTextField txtPremium;
 	private JPasswordField textContraseña2;
+	private ArrayList<String> idiomas = new ArrayList<String>();
 
 	/**
 	 * Create the panel.
 	 */
 	public VentanaRegistro(GestorVentanas v) {
 		ClientesSql sql = new ClientesSql();
+		sql.Idioma(v.idioma, idiomas);
 		
 		setSize(560, 385);
 		setVisible(true);
@@ -83,21 +86,6 @@ public class VentanaRegistro extends JPanel {
 		
 		
 		JButton btnInsertar = new JButton("Guardar");
-		btnInsertar.addActionListener(new ActionListener() {
-		    @Override
-		    public void actionPerformed(ActionEvent e) {
-		        // Recolecta los valores de los campos de texto y del JComboBox
-		    	v.cliente.setNombreCliente(textNombre.getText());
-		        v.cliente.setApellidoCliente(textApellido.getText());
-		        v.cliente.setContraseña(textContraseña.getText());
-		        v.cliente.setNombreUsuario(txtUsuario.getText());
-		        v.cliente.setTipoCliente("free");
-		        
-		        String fechaNacimiento = textContraseña2.getText();
-		        String premium =txtPremium.getText();
-		        sql.insertarCliente(v.cliente);
-		    }
-		});
 		btnInsertar.setBounds(400, 325, 111, 31);
 		add(btnInsertar);
 
@@ -177,7 +165,10 @@ public class VentanaRegistro extends JPanel {
 		add(textContraseña2);
 		
 		JComboBox comboBoxIdioma = new JComboBox();
-		comboBoxIdioma.setModel(new DefaultComboBoxModel(new String[] {"Euskera", "Español", "Ingles", "Frances", "Aleman", "Catalan", "Gallego", "Aragones"}));
+		comboBoxIdioma.setModel(new DefaultComboBoxModel());
+		for (int i = 0; i < idiomas.size(); i++) {
+			comboBoxIdioma.addItem(idiomas.get(i));
+		}
 		comboBoxIdioma.setSelectedIndex(0);
 		comboBoxIdioma.setBounds(346, 273, 151, 22);
 		add(comboBoxIdioma);
@@ -190,5 +181,26 @@ public class VentanaRegistro extends JPanel {
 		lblIdioma.setBounds(346, 241, 151, 23);
 		add(lblIdioma);
 		 setVisible(true);
+		 
+		 btnInsertar.addActionListener(new ActionListener() {
+			    @Override
+			    public void actionPerformed(ActionEvent e) {
+			    	if (txtPremium.equals(null)) {
+			        // Recolecta los valores de los campos de texto y del JComboBox
+			    	v.cliente.setNombreCliente(textNombre.getText());
+			        v.cliente.setApellidoCliente(textApellido.getText());
+			        v.cliente.setContraseña(textContraseña.getText());
+			        v.cliente.setNombreUsuario(txtUsuario.getText());
+			        v.cliente.setTipoCliente("free");
+			        v.cliente.setIdioma(ABORT);
+			        v.idioma.setDescripcion((String) comboBoxIdioma.getSelectedItem());
+			        String fechaNacimiento = textContraseña2.getText();
+			        sql.insertarCliente(v.cliente);
+			    	} else {
+			    		Error error = new Error();
+			    		error.error("Fecha Premium Seleccionada");
+			    	}
+			    }
+			});
 	}
 }

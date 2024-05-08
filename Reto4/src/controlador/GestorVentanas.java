@@ -22,6 +22,7 @@ import modelo.Reproduccion;
 import vista.VentanaArtista;
 import vista.VentanaBienvenida;
 import vista.VentanaDescubrirMusica;
+import vista.VentanaDisco;
 import vista.VentanaLogin;
 import vista.VentanaMenu;
 import vista.VentanaRegistro;
@@ -93,7 +94,7 @@ public class GestorVentanas extends JFrame {
 		}
 
 		case 6: {
-			// setContentPane(new PanelResumenCompra(this, this.controlador));
+			setContentPane(new VentanaDisco(this));
 			break;
 		}
 

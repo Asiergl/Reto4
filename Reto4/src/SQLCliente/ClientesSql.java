@@ -5,10 +5,12 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
 import modelo.Cliente;
+import modelo.Idioma;
 import vista.Error;
 
 public class ClientesSql {
@@ -61,7 +63,7 @@ public class ClientesSql {
 		}
 	}
 
-	public boolean validarLogin(String nombre_usuario, String Contrasena, Cliente cliente) {
+	public boolean validarLogin(String nombre_usuario, String Contrasena, Cliente cliente, Idioma idioma) {
 		Error error = new Error();
 		boolean ret = false;
 
@@ -75,8 +77,8 @@ public class ClientesSql {
 
 			statement = connection.createStatement();
 
-			String sql = "select * from cliente where nombre_usuario = '" + nombre_usuario + "' and Contraseña = '"
-					+ Contrasena + "'";
+			String sql = "select * from cliente JOIN idioma idi on idi.id_idioma = cli.id_idioma where nombre_usuario = '"
+					+ nombre_usuario + "' and Contraseña = '" + Contrasena + "'";
 			resultSet = statement.executeQuery(sql);
 
 			if (resultSet.next()) {
@@ -91,6 +93,9 @@ public class ClientesSql {
 				cliente.setEdad(resultSet.getInt(8));
 				cliente.setFechaRegistro(resultSet.getDate(9));
 				cliente.setTipoCliente(resultSet.getString(10));
+				idioma.setIdIdioma(resultSet.getInt(11));
+				idioma.setLetraIdioma(resultSet.getString(12));;
+				idioma.setDescripcion(resultSet.getString(13));
 				ret = true;
 			} else {
 				error.error("Nombre de usuario o contraseña incorrectos");
@@ -122,6 +127,30 @@ public class ClientesSql {
 			;
 		}
 		return ret;
+	}
+	public void Idioma(Idioma idioma, ArrayList<String> idiomas) {
+		Connection connection = null;
+		ResultSet resultSet = null;
+		Statement statement = null;
+
+		try {
+
+			connection = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tarde", "cliente",
+					"Elorrieta00");
+
+			statement = connection.createStatement();
+
+			String sql = "select descripcion from idioma";
+			resultSet = statement.executeQuery(sql);
+			while (resultSet.next()) {
+				idiomas.add(resultSet.getString(1));
+			}
+
+		} catch (SQLException sqle) {
+
+		} catch (Exception e) {
+
+		} 
 	}
 
 }

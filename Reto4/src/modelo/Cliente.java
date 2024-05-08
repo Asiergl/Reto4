@@ -6,7 +6,7 @@ public class Cliente {
 	private int idCliente;
 	private String nombreCliente;
 	private String apellidoCliente;
-	private String idioma;
+	private int idioma;
 	private String nombreUsuario;
 	private String contraseña;
 	private Date fechaNacimiento;
@@ -34,7 +34,7 @@ public class Cliente {
 		this.contCliente = contCliente;
 	}
 
-	public Cliente(int idCliente, String nombreCliente, String apellidoCliente, String idioma, String nombreUsuario,
+	public Cliente(int idCliente, String nombreCliente, String apellidoCliente, int idioma, String nombreUsuario,
 			String contraseña, Date fechaNacimiento, int edad, Date fechaRegistro, String tipoCliente) {
 		this.idCliente = idCliente;
 		this.nombreCliente = nombreCliente;
@@ -74,12 +74,12 @@ public class Cliente {
 		this.apellidoCliente = apellidoCliente;
 	}
 
-	public String getIdioma() {
+	public int getIdioma() {
 		return idioma;
 	}
 
-	public void setIdioma(String idioma) {
-		this.idioma = idioma;
+	public void setIdioma(int i) {
+		this.idioma = i;
 	}
 
 	public String getNombreUsuario() {
@@ -130,10 +130,6 @@ public class Cliente {
 		this.tipoCliente = tipoCliente;
 	}
 
-	public void setIdioma(int int1) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	
 	

@@ -101,7 +101,7 @@ public class VentanaLogin extends JPanel {
 						}
 					} else {
 
-						if (sql.validarLogin(nombre_usuario, contraseña, V.cliente)) {
+						if (sql.validarLogin(nombre_usuario, contraseña, V.cliente, V.idioma)) {
 							V.cambiarPanel(3);
 							V.setVisible(true);
 						}

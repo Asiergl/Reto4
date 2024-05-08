@@ -56,7 +56,7 @@ public class Subir {
 			ResultSet resultadoConsulta = consulta.executeQuery();
 			while (resultadoConsulta.next()) {
 				Blob imagenBlob = resultadoConsulta.getBlob(3);
-				byte[] arrayImagen = imagenBlob.getBytes(3, (int) imagenBlob.length());
+				byte[] arrayImagen = imagenBlob.getBytes(1, (int) imagenBlob.length());
 				imagen = new ImageIcon(arrayImagen);
 				System.out.println(arrayImagen);
 			}
