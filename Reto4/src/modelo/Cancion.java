@@ -1,4 +1,4 @@
-package modelo.modelo_pojos;
+package modelo;
 
 import java.awt.image.BufferedImage;
 
@@ -12,6 +12,10 @@ public class Cancion extends Audio{
 		this.idAlbum=idAlbum;
 		this.invitados=invitados;
 		
+	}
+
+	public Cancion() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public int getIdAlbum() {

@@ -1,4 +1,4 @@
-package modelo.modelo_pojos;
+package modelo;
 
 import java.sql.Date;
 
@@ -15,6 +15,9 @@ public PlayList(int idList, String titulo, Date fechaCreacion, int idCliente) {
 	this.titulo = titulo;
 	this.fechaCreacion = fechaCreacion;
 	this.idCliente = idCliente;
+}
+public PlayList() {
+	// TODO Auto-generated constructor stub
 }
 public int getIdList() {
 	return idList;

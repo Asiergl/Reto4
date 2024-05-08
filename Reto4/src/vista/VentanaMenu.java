@@ -1,4 +1,4 @@
-package ventanas;
+package vista;
 
 import javax.swing.JPanel;
 

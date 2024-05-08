@@ -1,4 +1,4 @@
-package modelo.modelo_pojos;
+package modelo;
 
 public class Idioma {
 private int idIdioma;
@@ -12,6 +12,9 @@ public Idioma(int idIdioma, String letraIdioma, String descripcion) {
 	this.idIdioma = idIdioma;
 	this.letraIdioma = letraIdioma;
 	this.descripcion = descripcion;
+}
+public Idioma() {
+	// TODO Auto-generated constructor stub
 }
 public int getIdIdioma() {
 	return idIdioma;

@@ -1,12 +1,14 @@
-package modelo.modelo_pojos;
+package modelo;
 
 import java.awt.image.BufferedImage;
+
+import javax.swing.ImageIcon;
 
 public class Podcaster extends Artista {
 
 	private String genero;
 
-	public Podcaster(int idArtista, String nombreArtistico, BufferedImage imagen, String descripcion, String genero) {
+	public Podcaster(int idArtista, String nombreArtistico, ImageIcon imagen, String descripcion, String genero) {
 		super(idArtista, nombreArtistico, imagen, descripcion);
 		this.genero=genero;
 		
@@ -14,6 +16,10 @@ public class Podcaster extends Artista {
 		
 		
 		
+	}
+
+	public Podcaster() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public String getGenero() {

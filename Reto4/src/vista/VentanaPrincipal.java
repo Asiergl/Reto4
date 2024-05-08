@@ -1,13 +1,9 @@
 package vista;
 
+import SQLCliente.Subir;
 import controlador.GestionBD;
 
 public class VentanaPrincipal {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		GestionBD gestion = new GestionBD();
-	}
 
 }
 

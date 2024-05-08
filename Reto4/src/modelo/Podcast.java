@@ -1,4 +1,4 @@
-package modelo.modelo_pojos;
+package modelo;
 
 import java.awt.image.BufferedImage;
 
@@ -13,6 +13,12 @@ public class Podcast extends Audio {
 		super(idAudio, nombreAudio, duracion, imagen, tipo);
 		this.colaboradores=colaboradores;
 		this.idPodcaster=idPodcaster;
+	}
+
+
+
+	public Podcast() {
+		// TODO Auto-generated constructor stub
 	}
 
 

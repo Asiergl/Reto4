@@ -1,4 +1,4 @@
-package modelo.modelo_pojos;
+package modelo;
 
 import java.util.Date;
 
@@ -6,19 +6,36 @@ public class Cliente {
 	private int idCliente;
 	private String nombreCliente;
 	private String apellidoCliente;
-	private String idioma;
+	private int idioma;
 	private String nombreUsuario;
 	private String contraseña;
 	private Date fechaNacimiento;
 	private int edad;
 	private Date fechaRegistro;
 	private String tipoCliente;
-	protected int playlistMax = 3;
+	//contadores para saber si el usuario es administrador o cliente
+	private int contAdmin = 0;
+	private int contCliente = 0;
 	
 	
-	public Cliente(int idCliente, String nombreCliente, String apellidoCliente, String idioma, String nombreUsuario,
+	public int getContAdmin() {
+		return contAdmin;
+	}
+
+	public void setContAdmin(int contAdmin) {
+		this.contAdmin = contAdmin;
+	}
+
+	public int getContCliente() {
+		return contCliente;
+	}
+
+	public void setContCliente(int contCliente) {
+		this.contCliente = contCliente;
+	}
+
+	public Cliente(int idCliente, String nombreCliente, String apellidoCliente, int idioma, String nombreUsuario,
 			String contraseña, Date fechaNacimiento, int edad, Date fechaRegistro, String tipoCliente) {
-		super();
 		this.idCliente = idCliente;
 		this.nombreCliente = nombreCliente;
 		this.apellidoCliente = apellidoCliente;
@@ -57,12 +74,12 @@ public class Cliente {
 		this.apellidoCliente = apellidoCliente;
 	}
 
-	public String getIdioma() {
+	public int getIdioma() {
 		return idioma;
 	}
 
-	public void setIdioma(String idioma) {
-		this.idioma = idioma;
+	public void setIdioma(int i) {
+		this.idioma = i;
 	}
 
 	public String getNombreUsuario() {
@@ -113,14 +130,7 @@ public class Cliente {
 		this.tipoCliente = tipoCliente;
 	}
 
-	public int getPlaylistMax() {
-		return playlistMax;
-	}
 
-	public void setPlaylistMax(int playlistMax) {
-		this.playlistMax = playlistMax;
-	}
-	
 	
 	
 	

@@ -43,29 +43,4 @@ public class GestionBD {
 		}
 		System.out.println("Conexion cerrada");
 	}
-
-	public boolean verificarLogin(String dni, String contraseña, GestorVentanas f) {
-	    boolean inicioSesionExitoso = false;
-	    try {
-	        Statement consulta = conexion.createStatement();
-
-	        String query = "SELECT * FROM cliente WHERE dni = '" + dni + "' AND contraseña = '" + contraseña + "'";
-	        ResultSet resultadoConsulta = consulta.executeQuery(query);
-
-	        if (resultadoConsulta.next()) {
-	            System.out.println("Inicio de sesión exitoso.");
-	            f.cambiarPanel(3);
-	            inicioSesionExitoso = true;
-	        } else {
-	            JOptionPane.showMessageDialog(null, "DNI o contraseña incorrectos");
-	        }
-
-	        // Cerrar el ResultSet, Statement y la conexión
-	        resultadoConsulta.close();
-	        consulta.close();
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    }
-	    return inicioSesionExitoso;
-	}
 }

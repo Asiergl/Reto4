@@ -1,18 +1,23 @@
-package modelo.modelo_pojos;
+package modelo;
 
 import java.awt.image.BufferedImage;
+
+import javax.swing.ImageIcon;
 
 public abstract class Artista {
 private int idArtista;
 private String nombreArtistico;
-private BufferedImage imagen;
+private ImageIcon imagen;
 private String descripcion;
 
+public Artista() {
+	
+}
 
-public Artista(int idArtista, String nombreArtistico, BufferedImage imagen, String descripcion) {
+public Artista(int idArtista, String nombreArtistico, ImageIcon imagen2, String descripcion) {
 	this.idArtista=idArtista;
 	this.nombreArtistico=nombreArtistico;
-	this.imagen = imagen;
+	this.imagen = imagen2;
 	this.descripcion=descripcion;
 	
 }
@@ -38,12 +43,12 @@ public void setNombreArtistico(String nombreArtistico) {
 }
 
 
-public BufferedImage getImagen() {
+public ImageIcon getImagen() {
 	return imagen;
 }
 
 
-public void setImagen(BufferedImage imagen) {
+public void setImagen(ImageIcon imagen) {
 	this.imagen = imagen;
 }
 

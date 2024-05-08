@@ -1,4 +1,4 @@
-package modelo.modelo_pojos;
+package modelo;
 
 public class Reproduccion {
 private int idAudio;
@@ -13,6 +13,9 @@ public Reproduccion(int idAudio, int idCliente, String fechaReproduccion) {
 	this.idAudio = idAudio;
 	this.idCliente = idCliente;
 	this.fechaReproduccion = fechaReproduccion;
+}
+public Reproduccion() {
+	// TODO Auto-generated constructor stub
 }
 public int getIdAudio() {
 	return idAudio;

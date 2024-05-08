@@ -1,4 +1,4 @@
-package modelo.modelo_pojos;
+package modelo;
 
 import java.awt.image.BufferedImage;
 
@@ -18,6 +18,10 @@ public abstract class Audio {
 		this.duracion = duracion;
 		this.imagen = imagen;
 		this.tipo = tipo;
+	}
+
+	public Audio() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public int getIdAudio() {

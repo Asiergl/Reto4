@@ -1,4 +1,4 @@
-package modelo.modelo_pojos;
+package modelo;
 
 public class Gustos {
 	private int idCliente;
@@ -7,6 +7,9 @@ public class Gustos {
 		super();
 		this.idCliente = idCliente;
 		this.idAudio = idAudio;
+	}
+	public Gustos() {
+		// TODO Auto-generated constructor stub
 	}
 	public int getIdCliente() {
 		return idCliente;
