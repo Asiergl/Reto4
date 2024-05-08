@@ -82,5 +82,12 @@ public class VentanaMenu extends JPanel {
 	        btnPlaylist.setForeground(Color.BLACK); // Establecer el color de la fuente en negro
 	        btnPlaylist.setBackground(Color.WHITE);
 	        add(btnPlaylist);
+	        btnMiPerfil.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					f.cambiarPanel(7);
+					f.setVisible(true);
+				}
+			});
 	    }
 	}
