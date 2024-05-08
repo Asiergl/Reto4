@@ -47,7 +47,7 @@ public class VentanaPerfil extends JPanel {
 		btnAtras.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				v.cambiarPanel(5);
+				v.cambiarPanel(3);
 				v.setVisible(true);
 			}
 		});
@@ -154,6 +154,14 @@ public class VentanaPerfil extends JPanel {
 		panel.setBounds(213, 111, 250, 265);
 		panel.setOpaque(true);
 		add(panel);
+		
+		 btnLogOut.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					v.cambiarPanel(0);
+					v.setVisible(true);
+				}
+			});
 		
 		
 	}
