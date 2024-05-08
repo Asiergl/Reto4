@@ -70,6 +70,7 @@ public class VentanaMenu extends JPanel {
 					f.setVisible(true);
 				}
 			});
+		//
 	        
 	        JButton btnDescubrirPodcast = new JButton("Descubrir Podcast");
 	        btnDescubrirPodcast.setBounds(134, 137, 190, 23);
