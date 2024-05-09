@@ -26,6 +26,7 @@ import vista.VentanaDisco;
 import vista.VentanaLogin;
 import vista.VentanaMenu;
 import vista.VentanaPerfil;
+import vista.VentanaPodcaster;
 import vista.VentanaRegistro;
 
 public class GestorVentanas extends JFrame {
@@ -46,7 +47,7 @@ public class GestorVentanas extends JFrame {
 	public Musico musico = new Musico();
 	public PlayList playlist = new PlayList();
 	public Podcast podcast = new Podcast();
-	public Podcaster pocaster = new Podcaster();
+	public Podcaster podcaster = new Podcaster();
 	public Premium premium = new Premium();
 	public Reproduccion reproduccion = new Reproduccion();
 	
@@ -101,6 +102,10 @@ public class GestorVentanas extends JFrame {
 
 		case 7: {
 			 setContentPane(new VentanaPerfil(this));
+			break;
+		}
+		case 8: {
+			setContentPane(new VentanaPodcaster(this));
 			break;
 		}
 		}

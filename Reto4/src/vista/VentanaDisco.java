@@ -78,6 +78,7 @@ public class VentanaDisco extends JPanel {
 		panel_1.setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel("Fecha de publicación:" + v.album.getFecha() +" \r\nGenero:<dynamic>");
+		lblNewLabel_1.setBackground(new Color(255, 255, 255));
 		lblNewLabel_1.setBounds(0, 0, 287, 141);
 		panel_1.add(lblNewLabel_1);
 

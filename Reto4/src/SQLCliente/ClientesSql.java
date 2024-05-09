@@ -5,12 +5,17 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.JOptionPane;
 
 import modelo.Cliente;
 import modelo.Idioma;
+import modelo.Premium;
 import vista.Error;
 
 public class ClientesSql {
@@ -20,7 +25,6 @@ public class ClientesSql {
 		Connection connection = null;
 
 		Statement statement = null;
-
 		try {
 			connection = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tarde", "cliente",
 					"Elorrieta00");
@@ -32,35 +36,20 @@ public class ClientesSql {
 			 * idioma.descripcion = idiomaD; set edad = YEAR_MONTH END
 			 * 
 			 */
-
-			String sql = "insert into cliente (id_cliente, nombre, apellido,id_idioma, nombre_usuario, contraseña, edad, fecha_registro, fecha_nacimiento, tipo) VALUES ('"
+			String sql = "insert into cliente (id_cliente, nombre, apellido,id_idioma, nombre_usuario, contraseña, edad, fecha_nacimiento, tipo) VALUES ('"
 					+ cliente.getIdCliente() + " ','" + cliente.getNombreCliente() + "','"
 					+ cliente.getApellidoCliente() + "','" + cliente.getIdioma() + " ','" + cliente.getNombreUsuario()
 					+ " ','" + cliente.getContraseña() + " ','" + cliente.getEdad() + " ','"
-					+ cliente.getFechaRegistro() + " ','" + cliente.getFechaNacimiento() + " ','"
+					+ cliente.getFechaNacimiento() + " ','"
 					+ cliente.getTipoCliente() + "')";
 
 			statement.executeUpdate(sql);
-
+			JOptionPane.showMessageDialog(null, "Cliente creado");
 		} catch (SQLException sqle) {
-			JOptionPane.showMessageDialog(null, "ERROR, Vuelve a intentarlo");
+			JOptionPane.showMessageDialog(null, sqle);
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "ERROR, Vuelve a intentarlo");
-		} finally {
-			try {
-				if (statement != null)
-					statement.close();
-				JOptionPane.showMessageDialog(null, "Cliente creado");
-			} catch (Exception e) {
-			}
-			;
-			try {
-				if (connection != null)
-					connection.close();
-			} catch (Exception e) {
-			}
-			;
-		}
+		} 
 	}
 
 	public boolean validarLogin(String nombre_usuario, String Contrasena, Cliente cliente, Idioma idioma) {
@@ -77,7 +66,7 @@ public class ClientesSql {
 
 			statement = connection.createStatement();
 
-			String sql = "select * from cliente JOIN idioma idi on idi.id_idioma = cli.id_idioma where nombre_usuario = '"
+			String sql = "select * from cliente cli JOIN idioma idi on idi.id_idioma = cli.id_idioma where nombre_usuario = '"
 					+ nombre_usuario + "' and Contraseña = '" + Contrasena + "'";
 			resultSet = statement.executeQuery(sql);
 
@@ -151,6 +140,30 @@ public class ClientesSql {
 		} catch (Exception e) {
 
 		} 
+	}
+	public void Premium(Premium premium){
+		Connection connection = null;
+		ResultSet resultSet = null;
+		Statement statement = null;
+
+		try {
+
+			connection = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tarde", "cliente",
+					"Elorrieta00");
+
+			statement = connection.createStatement();
+			
+			String sql = "insert into premium (id_cliente, fecha_caducidad) VALUES ('"
+					+ premium.getIdCliente() + " ','" + premium.getFechaCaducidad() + "')";
+
+			statement.executeUpdate(sql);
+
+		} catch (SQLException sqle) {
+
+		} catch (Exception e) {
+
+		} 
+		
 	}
 
 }
