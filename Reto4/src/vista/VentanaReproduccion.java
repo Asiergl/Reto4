@@ -77,23 +77,6 @@ public class VentanaReproduccion extends JPanel {
 
 		lblFlechaIzquierda_1.setIcon(new ImageIcon("imagenes/flechaDer.png"));
 		add(lblFlechaIzquierda_1);
-
-		JList list = new JList();
-		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		list.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				v.musico.setNombreArtistico((String) list.getSelectedValuesList().get(0));
-				v.cambiarPanel(5);
-			}
-		});
-		list.setModel(new AbstractListModel() {
-			public int getSize() {
-				return musicos.size();
-			}
-			public Object getElementAt(int index) {
-				return musicos.get(index);
-			}
-		});
+		
 	}
 }
