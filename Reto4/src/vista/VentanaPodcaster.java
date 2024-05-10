@@ -57,6 +57,14 @@ public class VentanaPodcaster extends JPanel {
 		btnMiPerfil.setForeground(Color.BLACK); // Establecer el color de la fuente en negro
 		btnMiPerfil.setBackground(Color.WHITE);
 		add(btnMiPerfil);
+		 btnMiPerfil.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					v.cambiarPanel(7);
+					v.setVisible(true);
+				}
+			});
+
 
 		JLabel lblNewLabel = new JLabel("VENTANA PODCASTER");
 		lblNewLabel.setBackground(new Color(255, 255, 255));
