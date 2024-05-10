@@ -16,6 +16,7 @@ import javax.swing.ListSelectionModel;
 
 import SQLCliente.DMusicaSQL;
 import controlador.GestorVentanas;
+import java.awt.Dimension;
 
 public class VentanaReproduccion extends JPanel {
 
@@ -26,7 +27,7 @@ public class VentanaReproduccion extends JPanel {
 	 * Create the panel.
 	 */
 	public VentanaReproduccion(GestorVentanas v) {
-		setSize(v.getSize());
+		setSize(new Dimension(481, 379));
 		setBackground(new Color(0, 0, 0));
 
 		DMusicaSQL sql = new DMusicaSQL();
@@ -53,30 +54,45 @@ public class VentanaReproduccion extends JPanel {
 		JLabel lblNewLabel = new JLabel("REPRODUCCIÓN");
 		lblNewLabel.setBackground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNewLabel.setBounds(155, 33, 142, 14);
+		lblNewLabel.setBounds(177, 33, 142, 14);
 		lblNewLabel.setForeground(Color.WHITE); // Establecer el color de fuente en blanco
 		add(lblNewLabel);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(140, 69, 179, 173);
+		panel.setBounds(151, 68, 179, 173);
 		add(panel);
 		
 		JLabel lblFlechaIzquierda = new JLabel("");
 		lblFlechaIzquierda.setForeground(Color.WHITE);
 		lblFlechaIzquierda.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		lblFlechaIzquierda.setBackground(Color.WHITE);
-		lblFlechaIzquierda.setBounds(33, 141, 89, 48);
+		lblFlechaIzquierda.setBounds(68, 141, 89, 48);
 		lblFlechaIzquierda.setIcon(new ImageIcon("imagenes/flechaIzq.png"));
 		add(lblFlechaIzquierda);
 		
-		JLabel lblFlechaIzquierda_1 = new JLabel("");
-		lblFlechaIzquierda_1.setForeground(Color.WHITE);
-		lblFlechaIzquierda_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblFlechaIzquierda_1.setBackground(Color.WHITE);
-		lblFlechaIzquierda_1.setBounds(340, 141, 89, 48);
-
-		lblFlechaIzquierda_1.setIcon(new ImageIcon("imagenes/flechaDer.png"));
-		add(lblFlechaIzquierda_1);
+		JLabel lblFlechaDerecha = new JLabel("");
+		lblFlechaDerecha.setForeground(Color.WHITE);
+		lblFlechaDerecha.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblFlechaDerecha.setBackground(Color.WHITE);
+		lblFlechaDerecha.setBounds(340, 141, 89, 48);
+		lblFlechaDerecha.setIcon(new ImageIcon("imagenes/flechaDer.png"));
+		add(lblFlechaDerecha);
+		
+		JLabel lblPause = new JLabel("");
+		lblPause.setForeground(Color.WHITE);
+		lblPause.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblPause.setBackground(Color.WHITE);
+		lblPause.setBounds(151, 252, 89, 48);
+		lblPause.setIcon(new ImageIcon("imagenes/pause.png"));
+		add(lblPause);
+		
+		JLabel lblPlay = new JLabel("");
+		lblPlay.setForeground(Color.WHITE);
+		lblPlay.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblPlay.setBackground(Color.WHITE);
+		lblPlay.setBounds(250, 252, 89, 48);
+		lblPlay.setIcon(new ImageIcon("imagenes/play.png"));
+		add(lblPlay);
 		
 	}
 }
