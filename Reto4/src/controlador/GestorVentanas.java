@@ -23,6 +23,7 @@ import vista.VentanaArtista;
 import vista.VentanaBienvenida;
 import vista.VentanaDescubrirMusica;
 import vista.VentanaDisco;
+import vista.VentanaEstadisticaTopCanciones;
 import vista.VentanaLogin;
 import vista.VentanaMenu;
 import vista.VentanaMenuAdmin;
@@ -116,6 +117,10 @@ public class GestorVentanas extends JFrame {
 		}
 		case 10:  {
 			setContentPane(new VentanaMenuAdmin(this));
+			break;
+		}
+		case 11:  {
+			setContentPane(new VentanaEstadisticaTopCanciones(this));
 			break;
 		}
 		
