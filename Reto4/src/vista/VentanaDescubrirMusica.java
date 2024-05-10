@@ -86,5 +86,11 @@ public class VentanaDescubrirMusica extends JPanel {
 		});
 		list.setBounds(80, 66, 302, 193);
 		add(list);
+		btnMiPerfil.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				v.cambiarPanel(7);
+			}
+		});
 	}
 }

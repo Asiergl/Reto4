@@ -245,7 +245,6 @@ public class VentanaRegistro extends JPanel {
 						String str = sdf.format(dateChooserNormal.getDate());
 						Date date = Date.valueOf(str);
 						int edad = new java.util.Date().getYear() -  date.getYear();
-						System.out.println(edad);
 						// Recolecta los valores de los campos de texto y del JComboBox
 						v.cliente.setIdCliente(10);
 						v.cliente.setNombreCliente(textNombre.getText());
@@ -282,7 +281,6 @@ public class VentanaRegistro extends JPanel {
 						String str1 = sdf1.format(dateChooserNormal.getDate());
 						Date date1 = Date.valueOf(str1);
 						int edad = new java.util.Date().getYear() -  date1.getYear();
-						System.out.println(edad);
 						// Recolecta los valores de los campos de texto y del JComboBox
 						v.cliente.setIdCliente(10);
 						v.cliente.setNombreCliente(textNombre.getText());

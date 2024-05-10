@@ -18,7 +18,7 @@ import controlador.GestorVentanas;
 import javax.swing.JList;
 import javax.swing.SwingConstants;
 
-public class VentanaPodcaster extends JPanel {
+public class VentanaPodcast extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	public ArrayList<String> podcasters  = new ArrayList<String>();
@@ -26,7 +26,7 @@ public class VentanaPodcaster extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public VentanaPodcaster(GestorVentanas v) {
+	public VentanaPodcast(GestorVentanas v) {
 		setSize(559, 387);
 		setBackground(new Color(0, 0, 0));
 		
@@ -52,6 +52,12 @@ public class VentanaPodcaster extends JPanel {
 		});
 
 		JButton btnMiPerfil = new JButton("Mi perfil");
+		btnMiPerfil.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				v.cambiarPanel(7);
+			}
+		});
 
 		btnMiPerfil.setBounds(351, 32, 89, 23);
 		btnMiPerfil.setForeground(Color.BLACK); // Establecer el color de la fuente en negro
@@ -79,7 +85,7 @@ public class VentanaPodcaster extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				v.podcaster.setNombreArtistico((String) listPodcasters.getSelectedValuesList().get(0));
-				v.cambiarPanel(7);
+				v.cambiarPanel(13);
 			}
 		});
 		listPodcasters.setBounds(79, 94, 281, 152);

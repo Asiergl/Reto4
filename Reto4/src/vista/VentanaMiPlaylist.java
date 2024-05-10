@@ -13,24 +13,30 @@ import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 
 import SQLCliente.DMusicaSQL;
+import SQLCliente.PlaylistSQL;
+import SQLCliente.PodcastSQL;
 import controlador.GestorVentanas;
+import modelo.Cliente;
+
 import javax.swing.JList;
 import javax.swing.SwingConstants;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
-public class VentanaDisco extends JPanel {
+public class VentanaMiPlaylist extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	public ArrayList<String> canciones = new ArrayList<String>();
+	public ArrayList<String> playlists = new ArrayList<String>();
 
 	/**
 	 * Create the panel.
 	 */
-	public VentanaDisco(GestorVentanas v) {
+	public VentanaMiPlaylist(GestorVentanas v) {
 		setSize(559, 387);
 		setBackground(new Color(0, 0, 0));
 		
-		DMusicaSQL sql = new DMusicaSQL();
-		sql.Canciones(v.album, v.cancion, canciones);
+		PlaylistSQL sql = new PlaylistSQL();
+		sql.Playlists(v.cliente, playlists);
 
 		setLayout(null);
 
@@ -45,63 +51,34 @@ public class VentanaDisco extends JPanel {
 		btnAtras.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				v.cambiarPanel(5);
+				v.cambiarPanel(3);
 				v.setVisible(true);
 			}
 		});
 
 		JButton btnMiPerfil = new JButton("Mi perfil");
 
-		btnMiPerfil.setBounds(326, 32, 89, 23);
+		btnMiPerfil.setBounds(440, 32, 89, 23);
 		btnMiPerfil.setForeground(Color.BLACK); // Establecer el color de la fuente en negro
 		btnMiPerfil.setBackground(Color.WHITE);
 		add(btnMiPerfil);
 
-		JLabel lblNewLabel = new JLabel("VENTANA ARTISTA");
+		JLabel lblNewLabel = new JLabel("MIS  PLAYLIST");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBackground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNewLabel.setBounds(142, 33, 172, 14);
+		lblNewLabel.setBounds(142, 33, 288, 14);
 		lblNewLabel.setForeground(Color.WHITE); // Establecer el color de fuente en blanco
 		add(lblNewLabel);
-
-		JLabel lblCanciones = new JLabel("Canciones");
-		lblCanciones.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCanciones.setForeground(Color.WHITE);
-		lblCanciones.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblCanciones.setBackground(Color.WHITE);
-		lblCanciones.setBounds(22, 76, 172, 14);
-		add(lblCanciones);
-
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(245, 101, 284, 141);
-		add(panel_1);
-		panel_1.setLayout(null);
-		
-		JLabel lblNewLabel_1 = new JLabel("Fecha de publicación:" + v.album.getFecha() +" \r\nGenero:<dynamic>");
-		lblNewLabel_1.setBackground(new Color(255, 255, 255));
-		lblNewLabel_1.setBounds(0, 0, 287, 141);
-		panel_1.add(lblNewLabel_1);
-
-		JLabel lblInformacin = new JLabel("Información");
-		lblInformacin.setForeground(Color.WHITE);
-		lblInformacin.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblInformacin.setBackground(Color.WHITE);
-		lblInformacin.setBounds(307, 76, 172, 14);
-		add(lblInformacin);
-
-		JLabel lblFoto = new JLabel("");
-		lblFoto.setBackground(new Color(255, 255, 255));
-		lblFoto.setBounds(366, 263, 163, 93);
-		add(lblFoto);
 		
 		JList listCanciones = new JList();
 		listCanciones.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listCanciones.setModel(new AbstractListModel() {
 			public int getSize() {
-				return canciones.size();
+				return playlists.size();
 			}
 			public Object getElementAt(int index) {
-				return canciones.get(index);
+				return playlists.get(index);
 			}
 		});
 		listCanciones.addMouseListener(new MouseAdapter() {
@@ -111,8 +88,31 @@ public class VentanaDisco extends JPanel {
 				v.cambiarPanel(7);
 			}
 		});
-		listCanciones.setBounds(22, 101, 172, 239);
+		listCanciones.setBounds(22, 80, 270, 279);
 		add(listCanciones);
+		
+		JButton btnNueva = new JButton("Nueva Playlist");
+		btnNueva.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				sql.NuevaList(v.cliente);
+				repaint();
+			}
+		});
+		btnNueva.setBounds(374, 77, 124, 23);
+		add(btnNueva);
+		
+		JButton btnBorrar = new JButton("Borrar Playlist");
+		btnBorrar.setBounds(374, 125, 124, 23);
+		add(btnBorrar);
+		
+		JButton btnImport = new JButton("Importar");
+		btnImport.setBounds(374, 171, 124, 23);
+		add(btnImport);
+		
+		JButton btnExport = new JButton("Exportar");
+		btnExport.setBounds(374, 220, 124, 23);
+		add(btnExport);
 		btnMiPerfil.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
