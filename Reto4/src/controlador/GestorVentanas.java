@@ -25,9 +25,11 @@ import vista.VentanaDescubrirMusica;
 import vista.VentanaDisco;
 import vista.VentanaLogin;
 import vista.VentanaMenu;
+import vista.VentanaMenuAdmin;
 import vista.VentanaPerfil;
 import vista.VentanaPodcaster;
 import vista.VentanaRegistro;
+import vista.VentanaReproduccion;
 
 public class GestorVentanas extends JFrame {
 
@@ -108,6 +110,15 @@ public class GestorVentanas extends JFrame {
 			setContentPane(new VentanaPodcaster(this));
 			break;
 		}
+		case 9:  {
+			setContentPane(new VentanaReproduccion(this));
+			break;
+		}
+		case 10:  {
+			setContentPane(new VentanaMenuAdmin(this));
+			break;
+		}
+		
 		}
 	}
 
