@@ -30,6 +30,7 @@ import vista.VentanaMiPlaylist;
 import vista.VentanaPerfil;
 import vista.VentanaPodcast;
 import vista.VentanaRegistro;
+import vista.VentanaReproduccion;
 
 public class GestorVentanas extends JFrame {
 
@@ -52,6 +53,9 @@ public class GestorVentanas extends JFrame {
 	public Podcaster podcaster = new Podcaster();
 	public Premium premium = new Premium();
 	public Reproduccion reproduccion = new Reproduccion();
+	public ArrayList<Cancion> canciones = new ArrayList<Cancion>();
+	public ArrayList<Cancion> favoritos = new ArrayList<Cancion>();
+	public GestorReproductor gestor = new GestorReproductor();
 
 	public GestorVentanas() {
 		setSize(600, 480);
@@ -110,11 +114,12 @@ public class GestorVentanas extends JFrame {
 			setContentPane(new VentanaPodcast(this));
 			break;
 		}
-		/*
+		
 		case 9: {
 			setContentPane(new VentanaReproduccion(this));
 			break;
 		}
+		/*
 		case 10: {
 			setContentPane(new VentanaMenuAdmin(this));
 			break;

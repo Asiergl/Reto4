@@ -30,9 +30,6 @@ public class VentanaPerfil extends JPanel {
 	public VentanaPerfil(GestorVentanas v) {
 		setSize(559, 387);
 		setBackground(new Color(0, 0, 0));
-		
-		DMusicaSQL sql = new DMusicaSQL();
-		sql.Canciones(v.album, v.cancion, canciones);
 
 		setLayout(null);
 

@@ -30,7 +30,7 @@ public class VentanaDisco extends JPanel {
 		setBackground(new Color(0, 0, 0));
 		
 		DMusicaSQL sql = new DMusicaSQL();
-		sql.Canciones(v.album, v.cancion, canciones);
+		sql.Canciones(v.album, v.cancion, canciones, v.canciones);
 
 		setLayout(null);
 
@@ -91,7 +91,7 @@ public class VentanaDisco extends JPanel {
 
 		JLabel lblFoto = new JLabel("");
 		lblFoto.setBackground(new Color(255, 255, 255));
-		lblFoto.setBounds(366, 263, 163, 93);
+		lblFoto.setBounds(305, 263, 163, 93);
 		add(lblFoto);
 		
 		JList listCanciones = new JList();
@@ -108,7 +108,9 @@ public class VentanaDisco extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				v.cancion.setNombreAudio((String) listCanciones.getSelectedValuesList().get(0));
-				v.cambiarPanel(7);
+				v.gestor.reproduciendo=listCanciones.getSelectedIndex();
+				sql.Cancion(v.cancion, v.audio);
+				v.cambiarPanel(9);
 			}
 		});
 		listCanciones.setBounds(22, 101, 172, 239);
