@@ -19,10 +19,13 @@ import modelo.Podcast;
 import modelo.Podcaster;
 import modelo.Premium;
 import modelo.Reproduccion;
+import vista.VentanaAdminGestionarMusica;
+import vista.VentanaAdminGestionarPlaylist;
 import vista.VentanaArtista;
 import vista.VentanaBienvenida;
 import vista.VentanaDescubrirMusica;
 import vista.VentanaDisco;
+import vista.VentanaEstadisticaMasFav;
 import vista.VentanaEstadisticaTopCanciones;
 import vista.VentanaLogin;
 import vista.VentanaMenu;
@@ -31,6 +34,8 @@ import vista.VentanaPerfil;
 import vista.VentanaPodcaster;
 import vista.VentanaRegistro;
 import vista.VentanaReproduccion;
+import vista.VentanaTopPlaylist;
+import vista.VentanaTopPodcastFav;
 
 public class GestorVentanas extends JFrame {
 
@@ -121,6 +126,26 @@ public class GestorVentanas extends JFrame {
 		}
 		case 11:  {
 			setContentPane(new VentanaEstadisticaTopCanciones(this));
+			break;
+		}
+		case 12:  {
+			setContentPane(new VentanaEstadisticaMasFav(this));
+			break;
+		}
+		case 13:  {
+			setContentPane(new VentanaTopPodcastFav(this));
+			break;
+		}
+		case 14:  {
+			setContentPane(new VentanaTopPlaylist(this));
+			break;
+		}
+		case 15:  {
+			setContentPane(new VentanaAdminGestionarMusica(this));
+			break;
+		}
+		case 16:  {
+			setContentPane(new VentanaAdminGestionarPlaylist(this));
 			break;
 		}
 		
