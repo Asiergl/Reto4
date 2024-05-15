@@ -11,22 +11,29 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controlador.GestorVentanas;
+import modelo.Cancion;
+
 import javax.swing.JTextField;
+
+import SQLCliente.ClientesSql;
+import SQLCliente.DMusicaSQL;
 
 public class AnadirCanciones extends JPanel {
 
     private static final long serialVersionUID = 1L;
     private JTextField txtNombreCancion;
     private JTextField txtDuracionCancion;
-    private JTextField txtTipoCancion;
 
     public AnadirCanciones(GestorVentanas f) {
+    	DMusicaSQL sql = new DMusicaSQL();
         setSize(567, 385);
         setBackground(new Color(0, 0, 0));
         setLayout(null);
@@ -89,17 +96,17 @@ public class AnadirCanciones extends JPanel {
         lblTipoCancin.setBounds(306, 179, 144, 22);
         add(lblTipoCancin);
         
-        txtTipoCancion = new JTextField();
-        txtTipoCancion.setColumns(10);
-        txtTipoCancion.setBounds(306, 212, 151, 29);
-        add(txtTipoCancion);
-        
         JLabel lblImagenCancin = new JLabel("Imagen canción:");
         lblImagenCancin.setForeground(Color.WHITE);
         lblImagenCancin.setFont(new Font("Tahoma", Font.PLAIN, 17));
         lblImagenCancin.setBackground(Color.WHITE);
         lblImagenCancin.setBounds(306, 101, 144, 22);
         add(lblImagenCancin);
+        
+        JComboBox comboBoxTipo = new JComboBox();
+        comboBoxTipo.setModel(new DefaultComboBoxModel(new String[] {"cancion", "podcast"}));
+        comboBoxTipo.setBounds(316, 212, 144, 25);
+        add(comboBoxTipo);
         
         JButton btnAadirImagen = new JButton("Añadir Imagen");
         btnAadirImagen.setForeground(Color.BLACK);
@@ -110,14 +117,23 @@ public class AnadirCanciones extends JPanel {
         JButton btnSiguiente = new JButton("Siguiente");
         btnSiguiente.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        	      f.cambiarPanel(18);
-                  f.setVisible(true);
+        		 String nombre = txtNombreCancion.getText();
+                 int duracion = Integer.parseInt(txtDuracionCancion.getText());
+                 String tipo = (String) comboBoxTipo.getSelectedItem();
+
+                 Cancion cancion = new Cancion(duracion, nombre, duracion, null, tipo, duracion, tipo);
+                 sql.insertarCancion(cancion);
+
+                 // Redirigir a otro panel
+                 f.cambiarPanel(18);
+                 f.setVisible(true);
         	}
         });
         btnSiguiente.setForeground(Color.BLACK);
         btnSiguiente.setBackground(Color.WHITE);
         btnSiguiente.setBounds(175, 309, 144, 23);
         add(btnSiguiente);
+        
 
         btnCerrarSesion.addMouseListener(new MouseAdapter() {
             @Override
