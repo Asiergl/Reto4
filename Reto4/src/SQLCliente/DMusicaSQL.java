@@ -12,7 +12,8 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-import com.mysql.jdbc.PreparedStatement;
+import com.mysql.jdbc.PreparedStatement
+
 
 import modelo.Album;
 import modelo.Artista;
@@ -26,7 +27,7 @@ public class DMusicaSQL {
 		ResultSet resultSet = null;
 
 		try {
-			connection = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tarde", "cliente",
+			connection = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tardee", "cliente",
 					"Elorrieta00");
 
 			statement = connection.createStatement();
@@ -46,6 +47,39 @@ public class DMusicaSQL {
 		}
 
 	}
+	public void insertarCancion(Cancion cancion) {
+	    Connection connection = null;
+	    Statement statement = null;
+	    try {
+	        connection = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tardee", "root", "");
+	        statement = connection.createStatement();
+
+	      
+	        String sql = "INSERT INTO Audio (id_audio, nombre, duracion, tipo) VALUES ('"
+	                + cancion.getIdAudio() + "', '" + cancion.getNombreAudio() + "', "
+	                + cancion.getDuracion() + ", '" + cancion.getTipo() + "')";
+
+	        statement.executeUpdate(sql);
+
+	        JOptionPane.showMessageDialog(null, "Canción insertada correctamente");
+	    } catch (SQLException sqle) {
+	        JOptionPane.showMessageDialog(null, "Error SQL: " + sqle.getMessage());
+	    } catch (Exception e) {
+	        JOptionPane.showMessageDialog(null, "ERROR, Vuelve a intentarlo");
+	    } finally {
+
+	        try {
+	            if (statement != null) {
+	                statement.close();
+	            }
+	            if (connection != null) {
+	                connection.close();
+	            }
+	        } catch (SQLException ex) {
+	            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + ex.getMessage());
+	        }
+	    }
+	}
 
 	public void Discos(Artista artista, Musico musico, ArrayList<String> discos) {
 		Connection connection = null;
@@ -54,7 +88,7 @@ public class DMusicaSQL {
 		ImageIcon imagen = new ImageIcon();
 
 		try {
-			connection = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tarde", "cliente",
+			connection = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tardee", "cliente",
 					"Elorrieta00");
 
 			statement = connection.createStatement();
@@ -91,7 +125,7 @@ public class DMusicaSQL {
 	}
 	public static ResultSet obtenerPlaylistsMasEscuchadas() throws SQLException {
 	 
-	    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/Reto4_grupo3_tarde", "root", "");
+	    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/Reto4_grupo3_tardee", "root", "");
 	    
 
 	    String sql = "SELECT idList, COUNT(*) AS Reproducciones "
@@ -114,7 +148,7 @@ public class DMusicaSQL {
 		ImageIcon imagen = new ImageIcon();
 
 		try {
-			connection = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tarde", "cliente",
+			connection = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tardee", "cliente",
 					"Elorrieta00");
 
 			statement = connection.createStatement();
@@ -153,7 +187,7 @@ public class DMusicaSQL {
 	}
 	 public static ResultSet obtenerCancionesMasEscuchadas() throws SQLException {
 	        // Establecer conexión con la base de datos
-	        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tarde", "root", "");
+	        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tardee", "root", "");
 	        
 	        //obtener las canciones más escuchadas
 	        String sql = "SELECT AU.Nombre AS Nombre_Cancion, COUNT(R.id_cliente) AS Escuchas "
