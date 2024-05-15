@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controlador.GestorVentanas;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class VentanaMenuAdmin extends JPanel {
 	
@@ -56,17 +58,21 @@ public class VentanaMenuAdmin extends JPanel {
 	        btnGestionarMusica.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					f.cambiarPanel(200);
+					f.cambiarPanel(15);
 					f.setVisible(true);
 				}
 			});
 		//
 	        
 	        JButton btnGestionarPodcast = new JButton("Gestionar Podcast");
+	        btnGestionarPodcast.addActionListener(new ActionListener() {
+	        	public void actionPerformed(ActionEvent e) {
+	        	}
+	        });
 	        btnGestionarPodcast.addMouseListener(new MouseAdapter() {
 	        	@Override
 	        	public void mouseClicked(MouseEvent e) {
-	        		f.cambiarPanel(200);
+	        		f.cambiarPanel(16);
 	        	}
 	        });
 	        btnGestionarPodcast.setBounds(134, 120, 190, 23);
@@ -75,6 +81,10 @@ public class VentanaMenuAdmin extends JPanel {
 	        add(btnGestionarPodcast);
 	        
 	        JButton btnTopCanciones = new JButton("Top canciones \"favoritas\"");
+	        btnTopCanciones.addActionListener(new ActionListener() {
+	        	public void actionPerformed(ActionEvent e) {
+	        	}
+	        });
 	        btnTopCanciones.setBounds(33, 230, 190, 23);
 	        btnTopCanciones.setForeground(Color.BLACK); // Establecer el color de la fuente en negro
 	        btnTopCanciones.setBackground(Color.WHITE);
@@ -111,10 +121,31 @@ public class VentanaMenuAdmin extends JPanel {
 	        btnCerrarSesion.setBounds(327, 32, 123, 23);
 	        add(btnCerrarSesion);
 	   
-	        btnTopCanciones.addMouseListener(new MouseAdapter() {
+	        btnTopMsEscuchadas.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					f.cambiarPanel(11);
+					f.setVisible(true);
+				}
+			});
+	        btnTopPodcast.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					f.cambiarPanel(13);
+					f.setVisible(true);
+				}
+			});
+	        btnTopPlaylist.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					f.cambiarPanel(14);
+					f.setVisible(true);
+				}
+			});
+	        btnTopCanciones.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					f.cambiarPanel(12);
 					f.setVisible(true);
 				}
 			});

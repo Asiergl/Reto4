@@ -11,14 +11,13 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-
-import controlador.GestorVentanas;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import SQLCliente.DMusicaSQL;
+import controlador.GestorVentanas;
 
-public class VentanaEstadisticaTopCanciones extends JPanel {
+public class VentanaTopPlaylist  extends JPanel {
 	
 
 	private static final long serialVersionUID = 1L;
@@ -27,7 +26,7 @@ public class VentanaEstadisticaTopCanciones extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public VentanaEstadisticaTopCanciones(GestorVentanas f) {
+	public VentanaTopPlaylist(GestorVentanas f) {
 		setSize(567, 385); 
 		setBackground(new Color(0, 0, 0));
          
@@ -49,7 +48,7 @@ public class VentanaEstadisticaTopCanciones extends JPanel {
 				}
 			});
 	        
-	        JLabel lblNewLabel = new JLabel("TOP CANCIONES");
+	        JLabel lblNewLabel = new JLabel("TOP PLAYLIST");
 	        lblNewLabel.setBackground(new Color(255, 255, 255));
 	        lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 17));
 	        lblNewLabel.setBounds(145, 33, 185, 22);
@@ -84,28 +83,23 @@ public class VentanaEstadisticaTopCanciones extends JPanel {
 	        add(scrollPane);
 	        
 	        try {
-	  
-	            ResultSet resultSet = DMusicaSQL.obtenerCancionesMasEscuchadas();
+	            ResultSet resultSet = DMusicaSQL.obtenerPlaylistsMasEscuchadas();
 	            
 	            DefaultTableModel model = (DefaultTableModel) table.getModel();
 	            model.setRowCount(0);
 	            
-	            // Agregar las canciones 
 	            int puesto = 1;
 	            while (resultSet.next()) {
-	                String nombreCancion = resultSet.getString("Nombre_Cancion");
-	                int escuchas = resultSet.getInt("Escuchas");
-	                model.addRow(new Object[]{puesto, "", nombreCancion, escuchas});
+	                int idPlaylist = resultSet.getInt("idList");
+	                int reproducciones = resultSet.getInt("Reproducciones");
+	                model.addRow(new Object[]{puesto, idPlaylist, reproducciones});
 	                puesto++;
 	            }
-	            
-	            // Cerrar el ResultSet
+	     
 	            resultSet.close();
 	        } catch (SQLException e) {
 	            e.printStackTrace();
-	            // Manejar el error de conexión o consulta de alguna manera adecuada
 	        }
-
 
 	        
 	        
