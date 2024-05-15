@@ -37,5 +37,25 @@ public class PodcastSQL {
 		}
 		
 	}
+	public static ResultSet obtenerPodcastsMasEscuchados() throws SQLException {
+		 
+	    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tarde", "root", "");
+	    
+
+	    String sql = "SELECT AU.Nombre AS Nombre_Podcast, COUNT(R.id_cliente) AS Reproducciones " +
+	                 "FROM Reproducciones R " +
+	                 "JOIN Audio AU ON R.id_audio = AU.id_audio " +
+	                 "JOIN Podcast P ON AU.id_audio = P.id_audio " +
+	                 "GROUP BY AU.Nombre " +
+	                 "ORDER BY Reproducciones DESC";
+	    
+
+	    java.sql.PreparedStatement statement = connection.prepareStatement(sql);
+	    
+	  
+	    ResultSet resultSet = statement.executeQuery();
+	    
+	    return resultSet;
+	}
 
 }
