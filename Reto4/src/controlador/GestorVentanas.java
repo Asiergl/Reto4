@@ -1,4 +1,4 @@
-package controlador;
+ package controlador;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +19,8 @@ import modelo.Podcast;
 import modelo.Podcaster;
 import modelo.Premium;
 import modelo.Reproduccion;
+import vista.AnadirAudio;
+import vista.AnadirCanciones;
 import vista.VentanaAdminGestionarMusica;
 import vista.VentanaAdminGestionarPlaylist;
 import vista.VentanaArtista;
@@ -148,6 +150,15 @@ public class GestorVentanas extends JFrame {
 			setContentPane(new VentanaAdminGestionarPlaylist(this));
 			break;
 		}
+		case 17:  {
+			setContentPane(new AnadirCanciones(this));
+			break;
+		}
+		case 18:  {
+			setContentPane(new AnadirAudio(this));
+			break;
+		}
+		
 		
 		}
 	}
