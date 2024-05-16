@@ -5,36 +5,34 @@ import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.Iterator;
 
+import javax.swing.AbstractListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.ListModel;
-
-import SQLCliente.DMusicaSQL;
-import controlador.GestorVentanas;
-import modelo.Musico;
-
-import javax.swing.JList;
-import javax.swing.AbstractListModel;
 import javax.swing.ListSelectionModel;
 
-public class VentanaDescubrirMusica extends JPanel {
+import SQLCliente.DMusicaSQL;
+import SQLCliente.PodcastSQL;
+import controlador.GestorVentanas;
+import javax.swing.JList;
+import javax.swing.SwingConstants;
+
+public class VentanaPodcast extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	public ArrayList<String> musicos = new ArrayList<String>();
+	public ArrayList<String> podcasters  = new ArrayList<String>();
 
 	/**
 	 * Create the panel.
 	 */
-	public VentanaDescubrirMusica(GestorVentanas v) {
-		setSize(460, 302);
+	public VentanaPodcast(GestorVentanas v) {
+		setSize(559, 387);
 		setBackground(new Color(0, 0, 0));
-
-		DMusicaSQL sql = new DMusicaSQL();
-		sql.Musicos(musicos);
 		
+		PodcastSQL sql = new PodcastSQL();
+		sql.podcaster(podcasters);
+
 		setLayout(null);
 
 		JButton btnAtras = new JButton("Atras");
@@ -54,50 +52,43 @@ public class VentanaDescubrirMusica extends JPanel {
 		});
 
 		JButton btnMiPerfil = new JButton("Mi perfil");
-
-		btnMiPerfil.setBounds(326, 32, 89, 23);
-		btnMiPerfil.setForeground(Color.BLACK); // Establecer el color de la fuente en negro
-		btnMiPerfil.setBackground(Color.WHITE);
-		add(btnMiPerfil);
-		 btnMiPerfil.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseClicked(MouseEvent e) {
-					v.cambiarPanel(7);
-					v.setVisible(true);
-				}
-			});
-
-		JLabel lblNewLabel = new JLabel("DESCUBRIR MUSICA");
-		lblNewLabel.setBackground(new Color(255, 255, 255));
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNewLabel.setBounds(142, 33, 172, 14);
-		lblNewLabel.setForeground(Color.WHITE); // Establecer el color de fuente en blanco
-		add(lblNewLabel);
-
-		JList list = new JList();
-		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		list.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				v.musico.setNombreArtistico((String) list.getSelectedValuesList().get(0));
-				v.cambiarPanel(5);
-			}
-		});
-		list.setModel(new AbstractListModel() {
-			public int getSize() {
-				return musicos.size();
-			}
-			public Object getElementAt(int index) {
-				return musicos.get(index);
-			}
-		});
-		list.setBounds(80, 66, 302, 193);
-		add(list);
 		btnMiPerfil.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				v.cambiarPanel(7);
 			}
 		});
+
+		btnMiPerfil.setBounds(351, 32, 89, 23);
+		btnMiPerfil.setForeground(Color.BLACK); // Establecer el color de la fuente en negro
+		btnMiPerfil.setBackground(Color.WHITE);
+		add(btnMiPerfil);
+
+		JLabel lblNewLabel = new JLabel("VENTANA PODCASTER");
+		lblNewLabel.setBackground(new Color(255, 255, 255));
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblNewLabel.setBounds(132, 33, 199, 14);
+		lblNewLabel.setForeground(Color.WHITE); // Establecer el color de fuente en blanco
+		add(lblNewLabel);
+		
+		JList listPodcasters = new JList();
+		listPodcasters.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		listPodcasters.setModel(new AbstractListModel() {
+			public int getSize() {
+				return podcasters.size();
+			}
+			public Object getElementAt(int index) {
+				return podcasters.get(index);
+			}
+		});
+		listPodcasters.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				v.podcaster.setNombreArtistico((String) listPodcasters.getSelectedValuesList().get(0));
+				v.cambiarPanel(13);
+			}
+		});
+		listPodcasters.setBounds(79, 94, 281, 152);
+		add(listPodcasters);
 	}
 }
