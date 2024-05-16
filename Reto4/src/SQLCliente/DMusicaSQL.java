@@ -27,7 +27,7 @@ public class DMusicaSQL {
 		ResultSet resultSet = null;
 
 		try {
-			connection = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tardee", "cliente",
+			connection = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tarde", "cliente",
 					"Elorrieta00");
 
 			statement = connection.createStatement();
@@ -51,7 +51,7 @@ public class DMusicaSQL {
 	    Connection connection = null;
 	    Statement statement = null;
 	    try {
-	        connection = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tardee", "root", "");
+	        connection = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tarde", "root", "");
 	        statement = connection.createStatement();
 
 	      
@@ -88,7 +88,7 @@ public class DMusicaSQL {
 		ImageIcon imagen = new ImageIcon();
 
 		try {
-			connection = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tardee", "cliente",
+			connection = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tarde", "cliente",
 					"Elorrieta00");
 
 			statement = connection.createStatement();
@@ -125,7 +125,7 @@ public class DMusicaSQL {
 	}
 	public static ResultSet obtenerPlaylistsMasEscuchadas() throws SQLException {
 	 
-	    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/Reto4_grupo3_tardee", "root", "");
+	    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/Reto4_grupo3_tarde", "root", "");
 	    
 
 	    String sql = "SELECT idList, COUNT(*) AS Reproducciones "
@@ -148,7 +148,7 @@ public class DMusicaSQL {
 		ImageIcon imagen = new ImageIcon();
 
 		try {
-			connection = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tardee", "cliente",
+			connection = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tarde", "cliente",
 					"Elorrieta00");
 
 			statement = connection.createStatement();
@@ -187,7 +187,7 @@ public class DMusicaSQL {
 	}
 	 public static ResultSet obtenerCancionesMasEscuchadas() throws SQLException {
 	        // Establecer conexión con la base de datos
-	        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tardee", "root", "");
+	        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tarde", "root", "");
 	        
 	        //obtener las canciones más escuchadas
 	        String sql = "SELECT AU.Nombre AS Nombre_Cancion, COUNT(R.id_cliente) AS Escuchas "
