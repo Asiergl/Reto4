@@ -12,6 +12,9 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
+import com.mysql.jdbc.PreparedStatement
+
+
 import modelo.Album;
 import modelo.Artista;
 import modelo.Cancion;
@@ -43,6 +46,39 @@ public class DMusicaSQL {
 		} finally {
 		}
 
+	}
+	public void insertarCancion(Cancion cancion) {
+	    Connection connection = null;
+	    Statement statement = null;
+	    try {
+	        connection = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tarde", "root", "");
+	        statement = connection.createStatement();
+
+	      
+	        String sql = "INSERT INTO Audio (id_audio, nombre, duracion, tipo) VALUES ('"
+	                + cancion.getIdAudio() + "', '" + cancion.getNombreAudio() + "', "
+	                + cancion.getDuracion() + ", '" + cancion.getTipo() + "')";
+
+	        statement.executeUpdate(sql);
+
+	        JOptionPane.showMessageDialog(null, "Canción insertada correctamente");
+	    } catch (SQLException sqle) {
+	        JOptionPane.showMessageDialog(null, "Error SQL: " + sqle.getMessage());
+	    } catch (Exception e) {
+	        JOptionPane.showMessageDialog(null, "ERROR, Vuelve a intentarlo");
+	    } finally {
+
+	        try {
+	            if (statement != null) {
+	                statement.close();
+	            }
+	            if (connection != null) {
+	                connection.close();
+	            }
+	        } catch (SQLException ex) {
+	            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + ex.getMessage());
+	        }
+	    }
 	}
 
 	public void Discos(Artista artista, Musico musico, ArrayList<String> discos) {
@@ -87,6 +123,24 @@ public class DMusicaSQL {
 		}
 
 	}
+	public static ResultSet obtenerPlaylistsMasEscuchadas() throws SQLException {
+	 
+	    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/Reto4_grupo3_tarde", "root", "");
+	    
+
+	    String sql = "SELECT idList, COUNT(*) AS Reproducciones "
+	               + "FROM Reproducciones_Playlist "
+	               + "GROUP BY idList "
+	               + "ORDER BY Reproducciones DESC";
+	    
+	
+	    java.sql.PreparedStatement statement = connection.prepareStatement(sql);
+	    ResultSet resultSet = statement.executeQuery();
+	    
+	    
+	    return resultSet;
+	}
+	
 	public void Canciones(Album album,Cancion cancion, ArrayList<String> canciones) {
 		Connection connection = null;
 		Statement statement = null;
@@ -131,4 +185,24 @@ public class DMusicaSQL {
 		}
 
 	}
+	 public static ResultSet obtenerCancionesMasEscuchadas() throws SQLException {
+	        // Establecer conexión con la base de datos
+	        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tarde", "root", "");
+	        
+	        //obtener las canciones más escuchadas
+	        String sql = "SELECT AU.Nombre AS Nombre_Cancion, COUNT(R.id_cliente) AS Escuchas "
+	                   + "FROM Reproducciones R "
+	                   + "JOIN AUDIO AU ON R.id_audio = AU.id_audio "
+	                   + "JOIN CANCION C ON AU.id_audio = C.id_audio "
+	                   + "GROUP BY AU.Nombre "
+	                   + "ORDER BY Escuchas DESC";
+	        
+	        // Preparar la sentencia SQL
+	        java.sql.PreparedStatement statement = connection.prepareStatement(sql);
+	        
+	        // Ejecutar
+	        ResultSet resultSet = statement.executeQuery();
+	        
+	        return resultSet;
+	    }
 }

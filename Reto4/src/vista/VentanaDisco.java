@@ -56,6 +56,14 @@ public class VentanaDisco extends JPanel {
 		btnMiPerfil.setForeground(Color.BLACK); // Establecer el color de la fuente en negro
 		btnMiPerfil.setBackground(Color.WHITE);
 		add(btnMiPerfil);
+		 btnMiPerfil.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					v.cambiarPanel(7);
+					v.setVisible(true);
+				}
+			});
+
 
 		JLabel lblNewLabel = new JLabel("VENTANA ALBUM");
 		lblNewLabel.setBackground(new Color(255, 255, 255));
@@ -80,6 +88,7 @@ public class VentanaDisco extends JPanel {
 		JLabel lblNewLabel_1 = new JLabel("Fecha de publicación:" + v.album.getFecha() +" \r\nGenero:<dynamic>");
 		lblNewLabel_1.setBackground(new Color(255, 255, 255));
 		lblNewLabel_1.setBounds(0, 0, 329, 124);
+
 		panel_1.add(lblNewLabel_1);
 
 		JLabel lblInformacin = new JLabel("Información");

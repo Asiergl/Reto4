@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.AbstractListModel;
 import javax.swing.BorderFactory;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -21,8 +23,10 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 
+
 import SQLCliente.ReproductorSQL;
 import SQLCliente.ReproductorSQL;
+
 import controlador.GestorVentanas;
 import java.awt.Dimension;
 
@@ -35,11 +39,13 @@ public class VentanaReproduccion extends JPanel {
 	 * Create the panel.
 	 */
 	public VentanaReproduccion(GestorVentanas v) {
+
 		v.gestor.play(v.cancion, v.canciones);
 		setSize(559, 387);
 		setBackground(new Color(0, 0, 0));
 
 		ReproductorSQL sql = new ReproductorSQL();
+
 
 		setLayout(null);
 
@@ -58,6 +64,7 @@ public class VentanaReproduccion extends JPanel {
 				v.setVisible(true);
 			}
 		});
+
 
 		JLabel lblNewLabel = new JLabel(v.cancion.getNombreAudio());// nombre de cancion
 		lblNewLabel.setBackground(new Color(255, 255, 255));
@@ -173,6 +180,5 @@ public class VentanaReproduccion extends JPanel {
 			v.gestor.play(v.cancion, v.canciones);
 
 		}
-
 	}
 }

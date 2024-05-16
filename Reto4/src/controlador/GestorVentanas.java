@@ -1,4 +1,4 @@
-package controlador;
+ package controlador;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,13 +19,25 @@ import modelo.Podcast;
 import modelo.Podcaster;
 import modelo.Premium;
 import modelo.Reproduccion;
+import vista.AnadirAudio;
+import vista.AnadirCanciones;
+import vista.VentanaAdminGestionarMusica;
+import vista.VentanaAdminGestionarPlaylist;
 import vista.VentanaArtista;
 import vista.VentanaBienvenida;
 import vista.VentanaDescubrirMusica;
 import vista.VentanaDisco;
+import vista.VentanaEstadisticaMasFav;
+import vista.VentanaEstadisticaTopCanciones;
 import vista.VentanaLogin;
 import vista.VentanaMenu;
+import vista.VentanaMenuAdmin;
+import vista.VentanaPerfil;
+import vista.VentanaPodcaster;
 import vista.VentanaRegistro;
+import vista.VentanaReproduccion;
+import vista.VentanaTopPlaylist;
+import vista.VentanaTopPodcastFav;
 
 public class GestorVentanas extends JFrame {
 
@@ -45,7 +57,7 @@ public class GestorVentanas extends JFrame {
 	public Musico musico = new Musico();
 	public PlayList playlist = new PlayList();
 	public Podcast podcast = new Podcast();
-	public Podcaster pocaster = new Podcaster();
+	public Podcaster podcaster = new Podcaster();
 	public Premium premium = new Premium();
 	public Reproduccion reproduccion = new Reproduccion();
 	
@@ -99,9 +111,55 @@ public class GestorVentanas extends JFrame {
 		}
 
 		case 7: {
-			// setContentPane(new PanelFin(this));
+			 setContentPane(new VentanaPerfil(this));
 			break;
 		}
+		case 8: {
+			setContentPane(new VentanaPodcaster(this));
+			break;
+		}
+		case 9:  {
+			setContentPane(new VentanaReproduccion(this));
+			break;
+		}
+		case 10:  {
+			setContentPane(new VentanaMenuAdmin(this));
+			break;
+		}
+		case 11:  {
+			setContentPane(new VentanaEstadisticaTopCanciones(this));
+			break;
+		}
+		case 12:  {
+			setContentPane(new VentanaEstadisticaMasFav(this));
+			break;
+		}
+		case 13:  {
+			setContentPane(new VentanaTopPodcastFav(this));
+			break;
+		}
+		case 14:  {
+			setContentPane(new VentanaTopPlaylist(this));
+			break;
+		}
+		case 15:  {
+			setContentPane(new VentanaAdminGestionarMusica(this));
+			break;
+		}
+		case 16:  {
+			setContentPane(new VentanaAdminGestionarPlaylist(this));
+			break;
+		}
+		case 17:  {
+			setContentPane(new AnadirCanciones(this));
+			break;
+		}
+		case 18:  {
+			setContentPane(new AnadirAudio(this));
+			break;
+		}
+		
+		
 		}
 	}
 
