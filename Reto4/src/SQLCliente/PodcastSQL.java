@@ -7,6 +7,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
+
+import modelo.Artista;
+import modelo.Audio;
+import modelo.Musico;
 import modelo.Podcast;
 import modelo.Podcaster;
 
@@ -37,25 +42,47 @@ public class PodcastSQL {
 		}
 		
 	}
-	public static ResultSet obtenerPodcastsMasEscuchados() throws SQLException {
-		 
-	    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tarde", "root", "");
-	    
+	public void Capitulos(Audio audio, Podcaster podcaster, ArrayList<String> capitulos) {
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		ImageIcon imagen = new ImageIcon();
 
-	    String sql = "SELECT AU.Nombre AS Nombre_Podcast, COUNT(R.id_cliente) AS Reproducciones " +
-	                 "FROM Reproducciones R " +
-	                 "JOIN Audio AU ON R.id_audio = AU.id_audio " +
-	                 "JOIN Podcast P ON AU.id_audio = P.id_audio " +
-	                 "GROUP BY AU.Nombre " +
-	                 "ORDER BY Reproducciones DESC";
-	    
+		try {
+			connection = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tarde", "cliente",
+					"Elorrieta00");
+			
+			statement = connection.createStatement();
+			String sql = "select * from podcaster where nombre_artistico ='" + podcaster.getNombreArtistico() + "'";
+			resultSet = statement.executeQuery(sql);
 
-	    java.sql.PreparedStatement statement = connection.prepareStatement(sql);
-	    
-	  
-	    ResultSet resultSet = statement.executeQuery();
-	    
-	    return resultSet;
+			if (resultSet.next()) {
+				podcaster.setIdArtista(resultSet.getInt(1));
+				/*
+				 * Blob imagenBlob = resultSet.getBlob(3);
+				 * byte[] arrayImagen = imagenBlob.getBytes(1, (int) imagenBlob.length());
+				 * imagen = new ImageIcon(arrayImagen); 
+				 * musico.setImagen(imagen);
+				 */
+				podcaster.setGenero(resultSet.getString(4));
+				podcaster.setDescripcion(resultSet.getString(5));
+			}
+			sql = "SELECT * FROM podcast pod JOIN audio au on au.id_audio = pod.id_audio WHERE id_podcaster  ='" + podcaster.getIdArtista() + "'";
+
+			resultSet = statement.executeQuery(sql);
+
+			while (resultSet.next()) {
+				capitulos.add(resultSet.getString(5));
+			}
+		} catch (SQLException sqle) {
+			System.out.println(sqle);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		} finally {
+		}
+
 	}
 
 }
