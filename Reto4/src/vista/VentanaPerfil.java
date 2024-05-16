@@ -30,9 +30,6 @@ public class VentanaPerfil extends JPanel {
 	public VentanaPerfil(GestorVentanas v) {
 		setSize(559, 387);
 		setBackground(new Color(0, 0, 0));
-		
-		DMusicaSQL sql = new DMusicaSQL();
-		sql.Canciones(v.album, v.cancion, canciones);
 
 		setLayout(null);
 
@@ -47,7 +44,7 @@ public class VentanaPerfil extends JPanel {
 		btnAtras.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				v.cambiarPanel(5);
+				v.cambiarPanel(3);
 				v.setVisible(true);
 			}
 		});
@@ -154,6 +151,14 @@ public class VentanaPerfil extends JPanel {
 		panel.setBounds(213, 111, 250, 265);
 		panel.setOpaque(true);
 		add(panel);
+		
+		 btnLogOut.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					v.cambiarPanel(0);
+					v.setVisible(true);
+				}
+			});
 		
 		
 	}

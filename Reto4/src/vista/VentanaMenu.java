@@ -73,12 +73,25 @@ public class VentanaMenu extends JPanel {
 		//
 	        
 	        JButton btnDescubrirPodcast = new JButton("Descubrir Podcast");
+	        btnDescubrirPodcast.addMouseListener(new MouseAdapter() {
+	        	@Override
+	        	public void mouseClicked(MouseEvent e) {
+	        		f.cambiarPanel(8);
+	        	}
+	        });
 	        btnDescubrirPodcast.setBounds(134, 137, 190, 23);
 	        btnDescubrirPodcast.setForeground(Color.BLACK); // Establecer el color de la fuente en negro
 	        btnDescubrirPodcast.setBackground(Color.WHITE);
 	        add(btnDescubrirPodcast);
 	        
 	        JButton btnPlaylist = new JButton("Mi Playlist");
+	        btnPlaylist.addMouseListener(new MouseAdapter() {
+	        	@Override
+	        	public void mouseClicked(MouseEvent e) {
+	        		f.cambiarPanel(12);
+	        		f.setVisible(true);
+	        	}
+	        });
 	        btnPlaylist.setBounds(134, 186, 190, 23);
 	        btnPlaylist.setForeground(Color.BLACK); // Establecer el color de la fuente en negro
 	        btnPlaylist.setBackground(Color.WHITE);
