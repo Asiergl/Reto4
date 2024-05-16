@@ -65,10 +65,9 @@ public class DMusicaSQL {
 			if (resultSet.next()) {
 				musico.setIdArtista(resultSet.getInt(1));
 				/*
-				 * Blob imagenBlob = resultSet.getBlob(3);
-				 * byte[] arrayImagen = imagenBlob.getBytes(1, (int) imagenBlob.length());
-				 * imagen = new ImageIcon(arrayImagen); 
-				 * musico.setImagen(imagen);
+				 * Blob imagenBlob = resultSet.getBlob(3); byte[] arrayImagen =
+				 * imagenBlob.getBytes(1, (int) imagenBlob.length()); imagen = new
+				 * ImageIcon(arrayImagen); musico.setImagen(imagen);
 				 */
 				musico.setDescripcion(resultSet.getString(4));
 				musico.setCaracteristica(resultSet.getString(5));
@@ -90,14 +89,16 @@ public class DMusicaSQL {
 		}
 
 	}
-	public void Canciones(Album album,Cancion cancion, ArrayList<String> nombreCanciones, ArrayList<Cancion> canciones) {
+
+	public void Canciones(Album album, Cancion cancion, ArrayList<String> nombreCanciones,
+			ArrayList<Cancion> canciones) {
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
 		ImageIcon imagen = new ImageIcon();
 
 		try {
-			canciones.clear();//se resetea el arraylist para que se añada solo el album selccionado
+			canciones.clear();// se resetea el arraylist para que se añada solo el album selccionado
 			connection = DriverManager.getConnection("jdbc:mysql://localhost/reto4_grupo3_tarde", "cliente",
 					"Elorrieta00");
 
@@ -108,22 +109,26 @@ public class DMusicaSQL {
 			if (resultSet.next()) {
 				album.setIdAlbum(resultSet.getString(1));
 				album.setFecha(resultSet.getDate(3));
-				album.setGenero(resultSet.getString(4));				
-				/*
-				 * Blob imagenBlob = resultSet.getBlob(5);
-				 * byte[] arrayImagen = imagenBlob.getBytes(1, (int) imagenBlob.length());
-				 * imagen = new ImageIcon(arrayImagen); 
-				 * musico.setImagen(imagen);
-				 */
+				album.setGenero(resultSet.getString(4));
+				Blob imagenBlob = resultSet.getBlob(5);
+				byte[] arrayImagen = imagenBlob.getBytes(1, (int) imagenBlob.length());
+				imagen = new ImageIcon(arrayImagen);
+				album.setImagen(imagen);
+
 				album.setIdArtista(resultSet.getInt(6));
 			}
 
-			sql = "SELECT * FROM cancion can JOIN audio au on au.id_audio = can.id_audio WHERE id_album ='" + album.getIdAlbum() + "' ORDER BY au.id_audio + 0";
+			sql = "SELECT * FROM cancion can JOIN audio au on au.id_audio = can.id_audio WHERE id_album ='"
+					+ album.getIdAlbum() + "' ORDER BY au.id_audio + 0";
 
 			resultSet = statement.executeQuery(sql);
 
 			while (resultSet.next()) {
-				canciones.add(new Cancion(resultSet.getInt(1), resultSet.getString(5), resultSet.getInt(6), null, resultSet.getString(8), resultSet.getInt(2), resultSet.getString(3)));
+				Blob imagenBlob = resultSet.getBlob(5);
+				byte[] arrayImagen = imagenBlob.getBytes(1, (int) imagenBlob.length());
+				imagen = new ImageIcon(arrayImagen);
+				canciones.add(new Cancion(resultSet.getInt(1), resultSet.getString(5), resultSet.getInt(6), imagen,
+						resultSet.getString(8), resultSet.getInt(2), resultSet.getString(3)));
 				nombreCanciones.add(resultSet.getString(5));
 			}
 		} catch (SQLException sqle) {
@@ -136,6 +141,7 @@ public class DMusicaSQL {
 		}
 
 	}
+
 	public void Cancion(Cancion cancion, Audio audio) {
 		Connection connection = null;
 		Statement statement = null;
@@ -147,7 +153,8 @@ public class DMusicaSQL {
 					"Elorrieta00");
 
 			statement = connection.createStatement();
-			String sql = "SELECT * FROM audio au JOIN cancion can on can.id_audio = au.id_audio WHERE nombre ='" + cancion.getNombreAudio() + "'";
+			String sql = "SELECT * FROM audio au JOIN cancion can on can.id_audio = au.id_audio WHERE nombre ='"
+					+ cancion.getNombreAudio() + "'";
 			resultSet = statement.executeQuery(sql);
 
 			if (resultSet.next()) {
@@ -157,12 +164,11 @@ public class DMusicaSQL {
 				cancion.setIdAlbum(resultSet.getInt(7));
 				cancion.setInvitados(resultSet.getString(8));
 				/*
-				 * Blob imagenBlob = resultSet.getBlob(5);
-				 * byte[] arrayImagen = imagenBlob.getBytes(1, (int) imagenBlob.length());
-				 * imagen = new ImageIcon(arrayImagen); 
-				 * musico.setImagen(imagen);
+				 * Blob imagenBlob = resultSet.getBlob(5); byte[] arrayImagen =
+				 * imagenBlob.getBytes(1, (int) imagenBlob.length()); imagen = new
+				 * ImageIcon(arrayImagen); musico.setImagen(imagen);
 				 */
-				
+
 			}
 		} catch (SQLException sqle) {
 			System.out.println(sqle);
@@ -172,6 +178,6 @@ public class DMusicaSQL {
 
 		} finally {
 		}
-		
+
 	}
 }

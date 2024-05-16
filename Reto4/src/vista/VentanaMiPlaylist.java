@@ -7,6 +7,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.AbstractListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -22,6 +23,8 @@ import javax.swing.JList;
 import javax.swing.SwingConstants;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class VentanaMiPlaylist extends JPanel {
 
@@ -34,7 +37,7 @@ public class VentanaMiPlaylist extends JPanel {
 	public VentanaMiPlaylist(GestorVentanas v) {
 		setSize(559, 387);
 		setBackground(new Color(0, 0, 0));
-		
+
 		PlaylistSQL sql = new PlaylistSQL();
 		sql.Playlists(v.cliente, playlists);
 
@@ -70,13 +73,14 @@ public class VentanaMiPlaylist extends JPanel {
 		lblNewLabel.setBounds(142, 33, 288, 14);
 		lblNewLabel.setForeground(Color.WHITE); // Establecer el color de fuente en blanco
 		add(lblNewLabel);
-		
+
 		JList listCanciones = new JList();
 		listCanciones.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listCanciones.setModel(new AbstractListModel() {
 			public int getSize() {
 				return playlists.size();
 			}
+
 			public Object getElementAt(int index) {
 				return playlists.get(index);
 			}
@@ -88,9 +92,9 @@ public class VentanaMiPlaylist extends JPanel {
 				v.cambiarPanel(7);
 			}
 		});
-		listCanciones.setBounds(22, 80, 270, 279);
+		listCanciones.setBounds(22, 80, 165, 279);
 		add(listCanciones);
-		
+
 		JButton btnNueva = new JButton("Nueva Playlist");
 		btnNueva.addKeyListener(new KeyAdapter() {
 			@Override
@@ -101,15 +105,22 @@ public class VentanaMiPlaylist extends JPanel {
 		});
 		btnNueva.setBounds(374, 77, 124, 23);
 		add(btnNueva);
-		
+
 		JButton btnBorrar = new JButton("Borrar Playlist");
+		btnBorrar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				sql.DropList(v.cliente, playlists);
+			}
+		});
 		btnBorrar.setBounds(374, 125, 124, 23);
 		add(btnBorrar);
-		
-		JButton btnImport = new JButton("Importar");
-		btnImport.setBounds(374, 171, 124, 23);
+
+		JButton btnImport = new JButton("");
+		btnImport.setBounds(374, 290, 124, 69);
+		btnImport.setIcon(new ImageIcon("imagenes/importar.png"));
 		add(btnImport);
-		
+
 		JButton btnExport = new JButton("Exportar");
 		btnExport.setBounds(374, 220, 124, 23);
 		add(btnExport);

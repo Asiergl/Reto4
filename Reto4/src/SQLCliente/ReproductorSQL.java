@@ -7,11 +7,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import controlador.GestorReproductor;
 import modelo.Cancion;
 import modelo.Cliente;
 
 public class ReproductorSQL {
-	public void Favoritos(Cliente cliente, Cancion cancion) {
+	public void Favoritos(Cliente cliente, ArrayList<Cancion> canciones, GestorReproductor gestor) {
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -23,7 +24,7 @@ public class ReproductorSQL {
 			statement = connection.createStatement();
 
 			String sql = "insert into gustos (id_cliente, id_audio) VALUES ('"
-					+ cliente.getIdCliente() + "','" + cancion.getIdAudio() + "')";
+					+ cliente.getIdCliente() + "','" + canciones.get(gestor.reproduciendo).getIdAudio() + "')";
 
 			statement.executeUpdate(sql);
 			

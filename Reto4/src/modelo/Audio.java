@@ -2,21 +2,23 @@ package modelo;
 
 import java.awt.image.BufferedImage;
 
+import javax.swing.ImageIcon;
+
 public abstract class Audio {
 
 	private int idAudio;
 	private String nombreAudio;
 	private int duracion;
-	private BufferedImage imagen;
+	private ImageIcon imagen;
 	
 	private String tipo;
 
-	public Audio(int idAudio, String nombreAudio, int duracion, BufferedImage imagen, String tipo) {
+	public Audio(int idAudio, String nombreAudio, int duracion, ImageIcon imagen2, String tipo) {
 		super();
 		this.idAudio = idAudio;
 		this.nombreAudio = nombreAudio;
 		this.duracion = duracion;
-		this.imagen = imagen;
+		this.imagen = imagen2;
 		this.tipo = tipo;
 	}
 
@@ -48,11 +50,11 @@ public abstract class Audio {
 		this.duracion = duracion;
 	}
 
-	public BufferedImage getImagen() {
+	public ImageIcon getImagen() {
 		return imagen;
 	}
 
-	public void setImagen(BufferedImage imagen) {
+	public void setImagen(ImageIcon imagen) {
 		this.imagen = imagen;
 	}
 

@@ -3,18 +3,20 @@ package modelo;
 import java.awt.image.BufferedImage;
 import java.sql.Date;
 
+import javax.swing.ImageIcon;
+
 public class Album  {
 	private String idAlbum;
 	private String titulo;
 	private Date fecha; //fecha de publicacion
 	private String genero;
-	private BufferedImage imagen;
+	private ImageIcon imagen;
 	private int idArtista;
 	private int numeroCanciones;
 	public Album() {
 	}
 
-	public Album(String idAlbum, String titulo, Date fecha, String genero, BufferedImage imagen, int idArtista,
+	public Album(String idAlbum, String titulo, Date fecha, String genero, ImageIcon imagen, int idArtista,
 			int numeroCanciones) {
 		super();
 		this.idAlbum = idAlbum;
@@ -49,11 +51,11 @@ public class Album  {
 	public void setGenero(String genero) {
 		this.genero = genero;
 	}
-	public BufferedImage getImagen() {
+	public ImageIcon getImagen() {
 		return imagen;
 	}
-	public void setImagen(BufferedImage imagen) {
-		this.imagen = imagen;
+	public void setImagen(ImageIcon imagen2) {
+		this.imagen = imagen2;
 	}
 	public int getIdArtista() {
 		return idArtista;

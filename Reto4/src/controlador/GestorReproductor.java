@@ -13,19 +13,13 @@ import modelo.Cancion;
 import modelo.Cliente;
 
 public class GestorReproductor {
-	private Clip cancionencurso;
+	public Clip cancionencurso;
 	public int reproduciendo;
+	public boolean repro = false;
 	/*
 	 * 
 	 * 
-	 * falta
-	 * el
-	 * menu
-	 * para
-	 * añadir
-	 * a
-	 * la 
-	 * playlist
+	 * falta el menu para añadir a la playlist
 	 * 
 	 * 
 	 * 
@@ -37,6 +31,7 @@ public class GestorReproductor {
 			cancionencurso.open(AudioSystem
 					.getAudioInputStream(new File("audios/" + canciones.get(reproduciendo).getIdAudio() + ".wav")));
 			cancionencurso.start();
+			repro = true;
 
 		} catch (UnsupportedAudioFileException e1) {
 			// TODO Auto-generated catch block
@@ -55,23 +50,35 @@ public class GestorReproductor {
 		cancionencurso.close();
 	}
 
-	public void siguiente(ArrayList<Cancion> canciones) {
+	public void siguiente(Cancion cancion, ArrayList<Cancion> canciones) {
+		if (repro == true) {
+			cancionencurso.stop();
+			cancionencurso.close();
+		}
 		// añadir anuncios
 		if (reproduciendo < canciones.size()) {
 			reproduciendo++;
-			//cambiar imagen
+			cancion.setNombreAudio(canciones.get(reproduciendo).getNombreAudio());
+			// cambiar imagen
 		} else {
 			reproduciendo = 0;
+			cancion.setNombreAudio(canciones.get(reproduciendo).getNombreAudio());
 		}
 
 	}
 
-	public void atras(ArrayList<Cancion> canciones, Cliente cliente) {
-		if (reproduciendo > 0) {
+	public void atras(ArrayList<Cancion> canciones, Cliente cliente, Cancion cancion) {
+		if (repro = true && cliente.getTipoCliente().equals("premium")) {
+			cancionencurso.stop();
+			cancionencurso.close();
+		}
+		if (reproduciendo > 0 && cliente.getTipoCliente().equals("premium")) {
 			reproduciendo--;
-			//cambiar imagen
-		} else if (cliente.getTipoCliente().equals("premium"))
+			cancion.setNombreAudio(canciones.get(reproduciendo).getNombreAudio());
+			// cambiar imagen
+		} else if (cliente.getTipoCliente().equals("premium")) {
 			reproduciendo = canciones.size();
+			cancion.setNombreAudio(canciones.get(reproduciendo).getNombreAudio());
+		}
 	}
-
 }
