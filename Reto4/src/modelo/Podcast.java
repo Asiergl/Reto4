@@ -2,6 +2,8 @@ package modelo;
 
 import java.awt.image.BufferedImage;
 
+import javax.swing.ImageIcon;
+
 public class Podcast extends Audio {
 	private String colaboradores;
 	private int idPodcaster;
@@ -9,7 +11,7 @@ public class Podcast extends Audio {
 	
 	
 
-	public Podcast(int idAudio, String nombreAudio, int duracion, BufferedImage imagen, String tipo, int idPodcaster, String colaboradores) {
+	public Podcast(int idAudio, String nombreAudio, int duracion, ImageIcon imagen, String tipo, int idPodcaster, String colaboradores) {
 		super(idAudio, nombreAudio, duracion, imagen, tipo);
 		this.colaboradores=colaboradores;
 		this.idPodcaster=idPodcaster;
